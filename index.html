@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insula Blue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              orange: {
+                '500': '#00263E',
+                '600': '#001a2b'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      [data-editable="true"]:hover, [data-editable="true"]:focus {
+        outline: 2px dashed #00A9FF;
+        cursor: pointer;
+        background-color: rgba(0, 169, 255, 0.1);
+      }
+      [data-editable-img="true"]:hover {
+        outline: 2px dashed #4CAF50;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.3);
+      }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-50">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

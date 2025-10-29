@@ -1,0 +1,505 @@
+{
+  "sectionOrder": [
+    "hero",
+    "about",
+    "whatWeDo",
+    "howItWorks",
+    "whyUs",
+    "team",
+    "featuredWork",
+    "media",
+    "faq"
+  ],
+  "header": {
+    "backgroundColor": "#00263E",
+    "navLinkColor": "#FFFFFFCC",
+    "activeNavLinkColor": "#FFFFFF",
+    "ctaBackgroundColor": "#FFFFFF",
+    "ctaTextColor": "#00263E",
+    "logoUrl": "https://i.postimg.cc/QtT9YML3/Insula-Logos-6.png",
+    "logoStyle": {
+      "width": "60.99609375px",
+      "height": "55.99609375px",
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "navLinks": [
+      {
+        "name": "Home",
+        "href": "#hero"
+      },
+      {
+        "name": "Como funciona",
+        "href": "#how-it-works"
+      },
+      {
+        "name": "Por que nos escolher?",
+        "href": "#why-us"
+      },
+      {
+        "name": "Quem somos",
+        "href": "#team"
+      }
+    ],
+    "navStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "ctaButton": {
+      "text": "faça parte",
+      "href": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Insula%20Blue"
+    },
+    "ctaButtonStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    }
+  },
+  "hero": {
+    "show": true,
+    "backgroundColor": "#000000",
+    "titleColor": "#FFFFFF",
+    "subtitleColor": "#FFFFFF",
+    "ctaBackgroundColor": "#00263E",
+    "ctaTextColor": "#FFFFFF",
+    "title": "Construa seu patrimônio com solidez, elegância e confiança",
+    "subtitle": "Um conceito criado para quem valoriza discrição, conhecimento e estabilidade em cada decisão.",
+    "titleFontSize": "3.75rem",
+    "subtitleFontSize": "1.25rem",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "subtitleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "ctaButtonStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "ctaButton": {
+      "text": "CONVERSE CONOSCO",
+      "href": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Insula%20Blue"
+    },
+    "videoUrl": "https://player.vimeo.com/video/1131484005?background=1",
+    "videoStyle": {
+      "position": "relative",
+      "top": "50px",
+      "left": "12.5%",
+      "width": "75%",
+      "height": "auto"
+    },
+    "customBlocks": []
+  },
+  "about": {
+    "show": true,
+    "backgroundColor": "#FFFFFF",
+    "titleColor": "#1f2937",
+    "accentColor": "#00263E",
+    "imageUrl": "https://i.postimg.cc/yYwBVtTG/Insula-Logos-7.png",
+    "imageStyle": {
+      "width": "100%",
+      "height": "auto",
+      "position": "relative",
+      "top": "0px",
+      "left": "0px",
+      "objectFit": "contain"
+    },
+    "title": "Planejamento inteligente, execução precisa e resultados sólidos.\nEstratégias criadas para quem busca crescer com discrição e confiança.",
+    "titleFontSize": "3rem",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "customBlocks": []
+  },
+  "whatWeDo": {
+    "show": true,
+    "backgroundColor": "#27272a",
+    "pretitleColor": "#ffffff",
+    "titleColor": "#FFFFFF",
+    "cardBackgroundColor": "#00263E",
+    "cardTitleColor": "#FFFFFF",
+    "cardTextColor": "#FFFFFFE6",
+    "pretitle": "SOLIDEZ, CLAREZA E ESTRATÉGIA PARA O CRESCIMENTO DO SEU PATRIMÔNIO",
+    "title": "O que fazemos na prática?",
+    "pretitleFontSize": "1.25rem",
+    "titleFontSize": "3.75rem",
+    "cardTitleFontSize": "1.25rem",
+    "pretitleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "services": [
+      {
+        "name": "Estruturação inteligente do seu patrimônio",
+        "description": "Desenvolvemos uma arquitetura patrimonial personalizada, combinando conhecimento técnico e análise estratégica para proteger, equilibrar e potencializar seus ativos."
+      },
+      {
+        "name": "Otimização do que você já possui",
+        "description": "Identificamos oportunidades de melhorar o desempenho e reduzir riscos com base no que você já construiu.\nCada decisão é guiada por análise, experiência e propósito."
+      },
+      {
+        "name": "Planejamento financeiro sob medida",
+        "description": "Criamos planos alinhados à sua realidade, metas e visão de futuro.\nUm trabalho confidencial, contínuo e estratégico, voltado à estabilidade e longevidade financeira."
+      },
+      {
+        "name": "Suporte à continuidade patrimonial",
+        "description": "Garantimos que o seu patrimônio seja preservado e transmitido com segurança, evitando burocracias e riscos desnecessários. Planejamento claro e estratégias sólidas para proteger o que você construiu e cuidar de quem você ama."
+      },
+      {
+        "name": "Acompanhamento dedicado e transparente",
+        "description": "Um relacionamento constante, confidencial e orientado por estratégia. A IB atua com total transparência, oferecendo insights, análises e diretrizes para cada decisão relevante."
+      },
+      {
+        "name": "Proteção integral do patrimônio",
+        "description": "Segurança e controle absoluto sobre o que é seu.\nNossas estruturas priorizam autonomia, estabilidade e independência, garantindo que cada ativo esteja protegido com inteligência e discrição."
+      }
+    ],
+    "customBlocks": []
+  },
+  "howItWorks": {
+    "show": true,
+    "backgroundColor": "#FFFFFF",
+    "pretitleColor": "#454545",
+    "titleColor": "#1f2937",
+    "titleAccentColor": "#00263E",
+    "descriptionColor": "#1f2937",
+    "stepCardBackgroundColor": "#f3f4f6",
+    "stepTitleColor": "#374151",
+    "stepDescriptionColor": "#4b5563",
+    "ctaBackgroundColor": "#1f2937",
+    "ctaTextColor": "#FFFFFF",
+    "pretitle": "CONSULTORIA ESTRATÉGICA PARA ACELERAR SEUS OBJETIVOS",
+    "titleStart": "Como a Insula Blue",
+    "titleAccent": " funciona na prática?",
+    "description": "Atuamos por meio de um processo estratégico e confidencial, desenhado para alinhar análise, planejamento e acompanhamento contínuo. Cada etapa é conduzida com precisão, garantindo solidez, transparência e evolução constante.",
+    "pretitleFontSize": "1.125rem",
+    "titleFontSize": "3.75rem",
+    "descriptionFontSize": "1.125rem",
+    "stepTitleFontSize": "1.5rem",
+    "pretitleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "descriptionStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "ctaButtonStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "steps": [
+      {
+        "title": "Entendimento profundo",
+        "description": "Antes de qualquer decisão, realizamos uma análise detalhada do seu cenário atual — objetivos, perfil e prioridades.\nEssa etapa define o ponto de partida com clareza e propósito."
+      },
+      {
+        "title": "Arquitetura patrimonial",
+        "description": "Estruturamos uma visão completa do seu patrimônio, identificando pontos de melhoria, proteção e crescimento. Nosso objetivo é construir bases sólidas para decisões duradouras."
+      },
+      {
+        "title": "Planejamento estratégico",
+        "description": "Com base na análise, traçamos um plano personalizado e racional, que equilibra risco, estabilidade e metas de longo prazo. Cada escolha é feita com foco em segurança e resultados reais."
+      },
+      {
+        "title": "Consultor\nconfidencial",
+        "description": "Mantemos um acompanhamento contínuo, ajustando estratégias conforme as mudanças do mercado e do seu momento de vida.\nDiscrição, transparência e solidez em cada passo."
+      }
+    ],
+    "ctaButton": {
+      "text": "FALE CONOSCO",
+      "href": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Insula%20Blue"
+    },
+    "customBlocks": []
+  },
+  "whyUs": {
+    "show": true,
+    "backgroundColor": "#FFFFFF",
+    "titleColor": "#1f2937",
+    "ctaBackgroundColor": "#00263E",
+    "ctaTextColor": "#FFFFFF",
+    "cardBackgroundColor": "#00263E",
+    "cardTitleColor": "#FFFFFF",
+    "cardTextColor": "#FFFFFF",
+    "cardAccentColor": "#FFFFFF",
+    "imageUrl": "https://i.postimg.cc/dQgn07QL/Insula-Logos-5.png",
+    "imageStyle": {
+      "width": "977.94921875px",
+      "height": "508.2109375px",
+      "position": "relative",
+      "top": "-113px",
+      "left": "126px"
+    },
+    "title": "Por que a Insula Blue?",
+    "titleFontSize": "3.75rem",
+    "cardTitleFontSize": "1.5rem",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "ctaButtonStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "ctaButton": {
+      "text": "CONVERSE CONOSCO",
+      "href": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Insula%20Blue"
+    },
+    "features": [
+      {
+        "title": "Essência Estratégica",
+        "description": "Somos uma empresa criada para quem valoriza racionalidade e profundidade nas decisões. Cada movimento é embasado em análise, conhecimento e experiência, não em modismos ou impulsos de mercado."
+      },
+      {
+        "title": "Compromisso Real com Resultados",
+        "description": "Trabalhamos com métricas de performance e propósito — cada ação precisa gerar valor mensurável e sustentável. Acreditamos que consistência e solidez são os verdadeiros indicadores de sucesso."
+      },
+      {
+        "title": "Confidencialidade e Presença Total",
+        "description": "A IB atua com discrição absoluta, acompanhando cada detalhe do seu patrimônio com sigilo e precisão.\nUm relacionamento humano, contínuo e baseado em confiança."
+      }
+    ],
+    "customBlocks": []
+  },
+  "team": {
+    "show": true,
+    "backgroundColor": "#000000",
+    "titleColor": "#FFFFFF",
+    "memberNameColor": "#FFFFFF",
+    "memberTitleColor": "#00263E",
+    "memberTextColor": "#d1d5db",
+    "title": "Quem somos?",
+    "titleFontSize": "3.75rem",
+    "memberNameFontSize": "1.5rem",
+    "memberTitleFontSize": "1.125rem",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "members": [],
+    "customBlocks": [
+      {
+        "type": "paragraph",
+        "text": "A IB (Insula Blue) é uma estrutura construída sobre confiança, conhecimento e discrição.\nNascemos com o propósito de unir estratégia, inteligência e estabilidade, oferecendo um caminho sólido e silencioso para quem valoriza o essencial.",
+        "style": {
+          "fontSize": "1.125rem",
+          "color": "#e5e7eb",
+          "lineHeight": "1.75"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Nossa atuação é pautada pela análise profunda, execução precisa e ética absoluta.\nNão buscamos visibilidade — buscamos resultados consistentes e relacionamentos duradouro's.",
+        "style": {
+          "fontSize": "1.125rem",
+          "color": "#e5e7eb",
+          "lineHeight": "1.75"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Cada decisão dentro da IB é tomada com base em dados, experiência e propósito.\nTrabalhamos de forma independente e confidencial, respeitando o tempo e a individualidade de cada cliente.",
+        "style": {
+          "fontSize": "1.125rem",
+          "color": "#e5e7eb",
+          "lineHeight": "1.75"
+        }
+      }
+    ]
+  },
+  "featuredWork": {
+    "show": false,
+    "backgroundColor": "#000000",
+    "titleColor": "#FFFFFF",
+    "ctaBorderColor": "#4b5563",
+    "ctaTextColor": "#FFFFFF",
+    "ctaHoverBackgroundColor": "#FFFFFF",
+    "ctaHoverTextColor": "#000000",
+    "title": "Featured Work",
+    "titleFontSize": "3rem",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "ctaButtonStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "ctaButton": {
+      "text": "view all work",
+      "href": "#"
+    },
+    "projects": [
+      {
+        "name": "Project One",
+        "category": "Branding",
+        "imageUrl": "https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80"
+      },
+      {
+        "name": "Project Two",
+        "category": "Web Design",
+        "imageUrl": "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
+      }
+    ],
+    "customBlocks": []
+  },
+  "media": {
+    "show": false,
+    "backgroundColor": "#f3f4f6",
+    "titleColor": "#1f2937",
+    "title": "Insula Blue na Mídia",
+    "titleFontSize": "3.75rem",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "articles": [
+      {
+        "href": "",
+        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/1-NOTICIA-9.jpg"
+      },
+      {
+        "href": "",
+        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/1-NOTICIA-10.jpg"
+      },
+      {
+        "href": "",
+        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/1-NOTICIA-11.jpg"
+      },
+      {
+        "href": "",
+        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/1-NOTICIA-12.jpg"
+      },
+      {
+        "href": "",
+        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/NOTICIA-13.jpg"
+      }
+    ],
+    "customBlocks": []
+  },
+  "faq": {
+    "show": true,
+    "backgroundColor": "#FFFFFF",
+    "titleColor": "#1f2937",
+    "questionColor": "#1f2937",
+    "openQuestionColor": "#00263E",
+    "answerColor": "#4b5563",
+    "title": "Perguntas Frequentes",
+    "titleFontSize": "3.75rem",
+    "questionFontSize": "1.25rem",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "items": [
+      {
+        "question": "Quais serviços a Insula Blue oferece?",
+        "answer": "Hoje oferecemos os serviços de: aconselhamento de patrimônio, construção de planejamento financeiro, suporte à sucessão e suporte em auto-custódia."
+      },
+      {
+        "question": "Quem pode fazer a consultoria?",
+        "answer": "Pessoas que já possuem mais de R$ 500 mil em investimentos, ou possuem esse capital disponível para ser investido."
+      },
+      {
+        "question": "Como é feita a cobrança?",
+        "answer": "Percentual fixo apenas sobre o montante sob aconselhamento, cobrado mês a mês, conforme o seu patrimônio evolui. Sem taxas escondidas e sem multas."
+      },
+      {
+        "question": "Existem multas no cancelamento?",
+        "answer": "Não existe qualquer multa sobre cancelamento, e não existe período mínimo de contrato. Queremos que a nossa relação sempre seja ganha x ganha."
+      }
+    ],
+    "customBlocks": []
+  },
+  "footer": {
+    "backgroundColor": "#000000",
+    "textColor": "#9ca3af",
+    "titleColor": "#FFFFFF",
+    "linkColor": "#9ca3af",
+    "linkHoverColor": "#FFFFFF",
+    "logoUrl": "https://i.postimg.cc/QtT9YML3/Insula-Logos-6.png",
+    "logoStyle": {
+      "width": "116.98828125px",
+      "height": "91.98046875px",
+      "position": "relative",
+      "top": "-5px",
+      "left": "0px"
+    },
+    "socialLinks": [
+      {
+        "name": "instagram",
+        "href": "https://www.instagram.com/insulabluebrasil/"
+      },
+      {
+        "name": "twitter",
+        "href": "https://x.com/Insulabluebrasil"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/company/insulablue"
+      }
+    ],
+    "contact": {
+      "email": "insulablue@gmail.com",
+      "phone": "48 9696-9403"
+    },
+    "contactStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "legal": {
+      "privacyPolicyLink": "#",
+      "privacyPolicyText": "Política de Privacidade",
+      "cnpj": "00.000.000/0000-00"
+    },
+    "legalStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    }
+  },
+  "_newContentDefaults": {
+    "navLink": { "name": "New Link", "href": "#" },
+    "service": { "name": "New Service", "description": "Enter a description for the new service here." },
+    "feature": { "title": "New Feature", "description": "Describe the new feature." },
+    "teamMember": { "name": "New Member", "title": "Position", "imageUrl": "https://via.placeholder.com/500", "achievements": ["New achievement"] },
+    "project": { "name": "New Project", "category": "Category", "imageUrl": "https://via.placeholder.com/800x600" },
+    "article": { "href": "#", "imageUrl": "https://via.placeholder.com/400x300" },
+    "faqItem": { "question": "New Question?", "answer": "Answer to the new question." },
+    "socialLink": { "name": "instagram", "href": "#" },
+    "customBlockHeading": { "type": "heading", "text": "New Heading", "style": { "fontSize": "2rem", "color": "#1f2937" } },
+    "customBlockParagraph": { "type": "paragraph", "text": "This is a new paragraph. Click to edit this text.", "style": { "fontSize": "1rem", "color": "#4b5563" } },
+    "customBlockImage": { "type": "image", "imageUrl": "https://via.placeholder.com/1200x400", "style": { "width": "100%", "height": "auto" } }
+  }
+}
