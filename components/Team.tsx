@@ -102,9 +102,7 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
               { path: 'team.show', label: 'Visibilidade da Seção', value: content.show, type: 'boolean' },
               { path: 'team.backgroundColor', label: 'Cor de Fundo', value: content.backgroundColor, type: 'color' },
               { path: 'team.memberNameColor', label: 'Cor do Nome', value: content.memberNameColor, type: 'color' },
-              { path: 'team.memberNameFontSize', label: 'Tamanho Fonte Nome (ex: 1.5rem)', value: content.memberNameFontSize, type: 'size' },
               { path: 'team.memberTitleColor', label: 'Cor do Cargo', value: content.memberTitleColor, type: 'color' },
-              { path: 'team.memberTitleFontSize', label: 'Tamanho Fonte Cargo (ex: 1.125rem)', value: content.memberTitleFontSize, type: 'size' },
               { path: 'team.memberTextColor', label: 'Cor do Texto', value: content.memberTextColor, type: 'color' },
             ])}
             onMoveUp={() => onMoveSection(sectionKey, 'up')}
@@ -120,7 +118,7 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
           />
       )}
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-3 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-1">
                  <EditableWrapper
                     isEditMode={isEditMode}
@@ -131,13 +129,12 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
                     path="team.titleStyle"
                  >
                     <h2 
-                      className="font-semibold"
-                      style={{ color: content.titleColor, fontSize: content.titleFontSize }}
+                      className="font-semibold text-4xl sm:text-5xl"
+                      style={{ color: content.titleColor }}
                       data-editable={isEditMode}
                       onClick={() => isEditMode && onOpenModal('Editando Título da Seção', [
                         { path: 'team.title', label: 'Título', value: content.title, type: 'text' },
                         { path: 'team.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
-                        { path: 'team.titleFontSize', label: 'Tamanho da Fonte (ex: 3.75rem)', value: content.titleFontSize, type: 'size' },
                       ])}
                    >{content.title}</h2>
                  </EditableWrapper>
@@ -171,7 +168,7 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
                 </div>
                 
                 {(content.members.length > 0 || isEditMode) && (
-                    <div className="grid md:grid-cols-2 gap-10 mt-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12">
                         {content.members.map((member, memberIndex) => {
                             if (!member.name && !isEditMode) return null;
 
@@ -233,12 +230,12 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
                                         <img src={member.imageUrl} alt={member.name} className="w-full rounded-2xl mb-6" />
                                     </div>
                                     <h3 
-                                        className="font-semibold"
-                                        style={{ color: content.memberNameColor, fontSize: content.memberNameFontSize }}
+                                        className="font-semibold text-xl md:text-2xl"
+                                        style={{ color: content.memberNameColor }}
                                     >{member.name}</h3>
                                     <p 
-                                        className="mb-4"
-                                        style={{ color: content.memberTitleColor, fontSize: content.memberTitleFontSize }}
+                                        className="mb-4 text-lg"
+                                        style={{ color: content.memberTitleColor }}
                                     >{member.title}</p>
                                     <div>
                                     <ul className="space-y-2 font-light text-sm list-disc list-inside" style={{ color: content.memberTextColor }}>

@@ -95,7 +95,7 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, onOpenModal,
     <section 
       id="hero"
       data-section-key={sectionKey}
-      className={`min-h-screen flex items-center pt-32 pb-16 lg:pt-0 lg:pb-0 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
+      className={`min-h-screen flex items-center pt-32 pb-16 md:pt-40 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
       style={{ backgroundColor: content.backgroundColor }}
     >
       {isEditMode && (
@@ -116,7 +116,7 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, onOpenModal,
             isHidden={!content.show}
           />
       )}
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <EditableWrapper
             isEditMode={isEditMode}
@@ -127,13 +127,12 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, onOpenModal,
             path="hero.titleStyle"
           >
             <h1 
-              className="font-semibold leading-tight" 
-              style={{ color: content.titleColor, fontSize: content.titleFontSize }}
+              className="font-semibold leading-tight text-4xl sm:text-5xl lg:text-6xl" 
+              style={{ color: content.titleColor }}
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal('Editando Título Principal', [
                 { path: 'hero.title', label: 'Título', value: content.title, type: 'textarea' },
                 { path: 'hero.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
-                { path: 'hero.titleFontSize', label: 'Tamanho da Fonte (ex: 3.75rem)', value: content.titleFontSize, type: 'size' },
               ])}
               dangerouslySetInnerHTML={{ __html: content.title }} 
             />
@@ -148,13 +147,12 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, onOpenModal,
             className="mt-6"
           >
             <p 
-              className="font-light"
-              style={{ color: content.subtitleColor, fontSize: content.subtitleFontSize }}
+              className="font-light text-lg sm:text-xl"
+              style={{ color: content.subtitleColor }}
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal('Editando Subtítulo', [
                 { path: 'hero.subtitle', label: 'Subtítulo', value: content.subtitle, type: 'textarea' },
                 { path: 'hero.subtitleColor', label: 'Cor do Subtítulo', value: content.subtitleColor, type: 'color' },
-                { path: 'hero.subtitleFontSize', label: 'Tamanho da Fonte (ex: 1.25rem)', value: content.subtitleFontSize, type: 'size' },
               ])}
             >
               {content.subtitle}

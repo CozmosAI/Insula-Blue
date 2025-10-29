@@ -104,7 +104,6 @@ const WhatWeDo: React.FC<WhatWeDoProps> = ({ content, isEditMode, onUpdate, newC
               { path: 'whatWeDo.backgroundColor', label: 'Cor de Fundo', value: content.backgroundColor, type: 'color' },
               { path: 'whatWeDo.cardBackgroundColor', label: 'Cor de Fundo do Card', value: content.cardBackgroundColor, type: 'color' },
               { path: 'whatWeDo.cardTitleColor', label: 'Cor do Título do Card', value: content.cardTitleColor, type: 'color' },
-              { path: 'whatWeDo.cardTitleFontSize', label: 'Tamanho Fonte Título Card (ex: 1.25rem)', value: content.cardTitleFontSize, type: 'size' },
               { path: 'whatWeDo.cardTextColor', label: 'Cor do Texto do Card', value: content.cardTextColor, type: 'color' },
             ])}
             onMoveUp={() => onMoveSection(sectionKey, 'up')}
@@ -130,13 +129,12 @@ const WhatWeDo: React.FC<WhatWeDoProps> = ({ content, isEditMode, onUpdate, newC
             path="whatWeDo.pretitleStyle"
           >
             <h2 
-              className="font-light uppercase tracking-wide"
-              style={{ color: content.pretitleColor, fontSize: content.pretitleFontSize }}
+              className="font-light uppercase tracking-wide text-base md:text-lg lg:text-xl"
+              style={{ color: content.pretitleColor }}
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal('Editando Pré-título', [
                 { path: 'whatWeDo.pretitle', label: 'Pré-título', value: content.pretitle, type: 'text' },
                 { path: 'whatWeDo.pretitleColor', label: 'Cor do Pré-título', value: content.pretitleColor, type: 'color' },
-                { path: 'whatWeDo.pretitleFontSize', label: 'Tamanho da Fonte (ex: 1.25rem)', value: content.pretitleFontSize, type: 'size' },
               ])}
             >{content.pretitle}</h2>
           </EditableWrapper>
@@ -150,13 +148,12 @@ const WhatWeDo: React.FC<WhatWeDoProps> = ({ content, isEditMode, onUpdate, newC
             className="mt-4"
           >
             <p 
-              className="font-semibold"
-              style={{ color: content.titleColor, fontSize: content.titleFontSize }}
+              className="font-semibold text-4xl sm:text-5xl"
+              style={{ color: content.titleColor }}
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal('Editando Título', [
                 { path: 'whatWeDo.title', label: 'Título', value: content.title, type: 'text' },
                 { path: 'whatWeDo.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
-                { path: 'whatWeDo.titleFontSize', label: 'Tamanho da Fonte (ex: 3.75rem)', value: content.titleFontSize, type: 'size' },
               ])}
             >{content.title}</p>
           </EditableWrapper>
@@ -197,8 +194,8 @@ const WhatWeDo: React.FC<WhatWeDoProps> = ({ content, isEditMode, onUpdate, newC
             >
               <div>
                 <h3 
-                    className="font-semibold"
-                    style={{ color: content.cardTitleColor, fontSize: content.cardTitleFontSize }}
+                    className="font-semibold text-lg md:text-xl"
+                    style={{ color: content.cardTitleColor }}
                 >{service.name}</h3>
                 <p 
                     className="mt-4 text-base font-light"

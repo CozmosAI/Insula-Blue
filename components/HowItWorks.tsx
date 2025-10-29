@@ -124,7 +124,6 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
               { path: 'howItWorks.backgroundColor', label: 'Cor de Fundo', value: content.backgroundColor, type: 'color' },
               { path: 'howItWorks.stepCardBackgroundColor', label: 'Cor de Fundo da Etapa', value: content.stepCardBackgroundColor, type: 'color' },
               { path: 'howItWorks.stepTitleColor', label: 'Cor do Título da Etapa', value: content.stepTitleColor, type: 'color' },
-              { path: 'howItWorks.stepTitleFontSize', label: 'Tamanho Título Etapa (ex: 1.5rem)', value: content.stepTitleFontSize, type: 'size' },
               { path: 'howItWorks.stepDescriptionColor', label: 'Cor da Descrição da Etapa', value: content.stepDescriptionColor, type: 'color' },
             ])}
             onMoveUp={() => onMoveSection(sectionKey, 'up')}
@@ -140,7 +139,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
           />
       )}
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
             <div>
                  <EditableWrapper
                     isEditMode={isEditMode}
@@ -151,13 +150,12 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                     path="howItWorks.pretitleStyle"
                  >
                     <p 
-                      className="uppercase tracking-widest font-light mb-4"
-                      style={{ color: content.pretitleColor, fontSize: content.pretitleFontSize }}
+                      className="uppercase tracking-widest font-light mb-4 text-base md:text-lg"
+                      style={{ color: content.pretitleColor }}
                       data-editable={isEditMode}
                       onClick={() => isEditMode && onOpenModal('Editando Pré-título', [
                         { path: 'howItWorks.pretitle', label: 'Pré-título', value: content.pretitle, type: 'text' },
                         { path: 'howItWorks.pretitleColor', label: 'Cor do Pré-título', value: content.pretitleColor, type: 'color' },
-                        { path: 'howItWorks.pretitleFontSize', label: 'Tamanho da Fonte (ex: 1.125rem)', value: content.pretitleFontSize, type: 'size' },
                       ])}
                    >{content.pretitle}</p>
                  </EditableWrapper>
@@ -170,14 +168,13 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                     path="howItWorks.titleStyle"
                  >
                     <h2 
-                      className="font-semibold leading-tight"
-                      style={{ color: content.titleColor, fontSize: content.titleFontSize }}
+                      className="font-semibold leading-tight text-3xl sm:text-4xl lg:text-5xl"
+                      style={{ color: content.titleColor }}
                       data-editable={isEditMode}
                       onClick={() => isEditMode && onOpenModal('Editando Título', [
                         { path: 'howItWorks.titleStart', label: 'Início do Título', value: content.titleStart, type: 'text' },
                         { path: 'howItWorks.titleAccent', label: 'Destaque do Título', value: content.titleAccent, type: 'text' },
                         { path: 'howItWorks.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
-                        { path: 'howItWorks.titleFontSize', label: 'Tamanho da Fonte (ex: 3.75rem)', value: content.titleFontSize, type: 'size' },
                         { path: 'howItWorks.titleAccentColor', label: 'Cor de Destaque do Título', value: content.titleAccentColor, type: 'color' },
                       ])}
                    >
@@ -196,12 +193,12 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                 path="howItWorks.descriptionStyle"
               >
                   <p 
-                      style={{ color: content.descriptionColor, fontSize: content.descriptionFontSize }}
+                      className="text-base md:text-lg"
+                      style={{ color: content.descriptionColor }}
                       data-editable={isEditMode}
                       onClick={() => isEditMode && onOpenModal('Editando Descrição', [
                         { path: 'howItWorks.description', label: 'Descrição', value: content.description, type: 'textarea' },
                         { path: 'howItWorks.descriptionColor', label: 'Cor da Descrição', value: content.descriptionColor, type: 'color' },
-                        { path: 'howItWorks.descriptionFontSize', label: 'Tamanho da Fonte (ex: 1.125rem)', value: content.descriptionFontSize, type: 'size' },
                       ])}
                   >
                       {content.description}
@@ -244,8 +241,8 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                 <div className="flex items-center gap-4">
                     {stepIcons[index % stepIcons.length]}
                     <h3 
-                        className="font-semibold"
-                        style={{ color: content.stepTitleColor, fontSize: content.stepTitleFontSize }}
+                        className="font-semibold text-xl"
+                        style={{ color: content.stepTitleColor }}
                     >{step.title}</h3>
                 </div>
               <p 

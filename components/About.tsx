@@ -102,7 +102,7 @@ const About: React.FC<AboutProps> = ({ content, isEditMode, onUpdate, onOpenModa
             isHidden={!content.show}
           />
       )}
-      <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
         <EditableWrapper
             isEditMode={isEditMode}
             isDraggable={true}
@@ -136,13 +136,12 @@ const About: React.FC<AboutProps> = ({ content, isEditMode, onUpdate, onOpenModa
             path="about.titleStyle"
           >
             <h2 
-              className="font-semibold leading-tight"
-              style={{ color: content.titleColor, fontSize: content.titleFontSize }}
+              className="font-semibold leading-tight text-3xl sm:text-4xl lg:text-5xl"
+              style={{ color: content.titleColor }}
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal('Editando Título', [
                   { path: 'about.title', label: 'Título', value: content.title, type: 'textarea' },
                   { path: 'about.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
-                  { path: 'about.titleFontSize', label: 'Tamanho da Fonte (ex: 3rem)', value: content.titleFontSize, type: 'size' },
                   { path: 'about.accentColor', label: 'Cor de Destaque', value: content.accentColor, type: 'color' },
               ])}
             >

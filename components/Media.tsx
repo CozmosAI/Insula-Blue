@@ -117,13 +117,12 @@ const Media: React.FC<MediaProps> = ({ content, isEditMode, onUpdate, newContent
                     path="media.titleStyle"
                 >
                     <h2 
-                        className="font-semibold text-center mb-12 lg:mb-20"
-                        style={{ color: content.titleColor, fontSize: content.titleFontSize }}
+                        className="font-semibold text-center mb-12 lg:mb-20 text-4xl sm:text-5xl"
+                        style={{ color: content.titleColor }}
                         data-editable={isEditMode}
                         onClick={() => isEditMode && onOpenModal('Editando Título', [
                           { path: 'media.title', label: 'Título', value: content.title, type: 'text' },
                           { path: 'media.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
-                          { path: 'media.titleFontSize', label: 'Tamanho da Fonte (ex: 3.75rem)', value: content.titleFontSize, type: 'size' },
                         ])}
                     >
                         {content.title}

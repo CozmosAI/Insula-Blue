@@ -111,7 +111,6 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                       { path: 'whyUs.backgroundColor', label: 'Cor de Fundo', value: content.backgroundColor, type: 'color' },
                       { path: 'whyUs.cardBackgroundColor', label: 'Cor de Fundo do Card', value: content.cardBackgroundColor, type: 'color' },
                       { path: 'whyUs.cardTitleColor', label: 'Cor do Título do Card', value: content.cardTitleColor, type: 'color' },
-                      { path: 'whyUs.cardTitleFontSize', label: 'Tamanho Título Card (ex: 1.5rem)', value: content.cardTitleFontSize, type: 'size' },
                       { path: 'whyUs.cardTextColor', label: 'Cor do Texto do Card', value: content.cardTextColor, type: 'color' },
                       { path: 'whyUs.cardAccentColor', label: 'Cor de Destaque do Card', value: content.cardAccentColor, type: 'color' },
                     ])}
@@ -153,7 +152,7 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                     </div>
                 </EditableWrapper>
 
-                <div className="grid lg:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     <div className="lg:col-span-1 space-y-6">
                         <EditableWrapper
                             isEditMode={isEditMode}
@@ -164,13 +163,12 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                             path="whyUs.titleStyle"
                         >
                             <h2 
-                                className="font-semibold"
-                                style={{ color: content.titleColor, fontSize: content.titleFontSize }}
+                                className="font-semibold text-4xl sm:text-5xl"
+                                style={{ color: content.titleColor }}
                                 data-editable={isEditMode}
                                 onClick={() => isEditMode && onOpenModal('Editando Título', [
                                   { path: 'whyUs.title', label: 'Título', value: content.title, type: 'text' },
                                   { path: 'whyUs.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
-                                  { path: 'whyUs.titleFontSize', label: 'Tamanho da Fonte (ex: 3.75rem)', value: content.titleFontSize, type: 'size' },
                                 ])}
                             >{content.title}</h2>
                         </EditableWrapper>
@@ -242,8 +240,8 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                                 )}
                             >
                                 <h3 
-                                    className="font-semibold"
-                                    style={{ color: content.cardTitleColor, fontSize: content.cardTitleFontSize }}
+                                    className="font-semibold text-xl md:text-2xl"
+                                    style={{ color: content.cardTitleColor }}
                                 >{feature.title}</h3>
                                 <hr className="w-1/3 border-t-2 my-4" style={{ borderColor: content.cardAccentColor }} />
                                 <p 

@@ -72,10 +72,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick, is
         data-editable={isEditMode}
       >
         <h3 
-            className="font-medium"
+            className="font-medium text-lg md:text-xl"
             style={{ 
               color: isOpen ? content.openQuestionColor : content.questionColor,
-              fontSize: content.questionFontSize,
             }}
         >
           {item.question}
@@ -170,7 +169,6 @@ const Faq: React.FC<{
               { path: 'faq.show', label: 'Visibilidade da Seção', value: content.show, type: 'boolean' },
               { path: 'faq.backgroundColor', label: 'Cor de Fundo', value: content.backgroundColor, type: 'color' },
               { path: 'faq.questionColor', label: 'Cor da Pergunta', value: content.questionColor, type: 'color' },
-              { path: 'faq.questionFontSize', label: 'Tamanho Fonte Pergunta (ex: 1.25rem)', value: content.questionFontSize, type: 'size' },
               { path: 'faq.openQuestionColor', label: 'Cor da Pergunta (Aberta)', value: content.openQuestionColor, type: 'color' },
               { path: 'faq.answerColor', label: 'Cor da Resposta', value: content.answerColor, type: 'color' },
             ])}
@@ -196,13 +194,12 @@ const Faq: React.FC<{
             path="faq.titleStyle"
         >
             <h2 
-                className="font-semibold text-center mb-12 lg:mb-20"
-                style={{ color: content.titleColor, fontSize: content.titleFontSize }}
+                className="font-semibold text-center mb-12 lg:mb-20 text-4xl sm:text-5xl"
+                style={{ color: content.titleColor }}
                 data-editable={isEditMode}
                 onClick={() => isEditMode && onOpenModal('Editando Título do FAQ', [
                   { path: 'faq.title', label: 'Título', value: content.title, type: 'text' },
                   { path: 'faq.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
-                  { path: 'faq.titleFontSize', label: 'Tamanho da Fonte (ex: 3.75rem)', value: content.titleFontSize, type: 'size' },
                 ])}
             >
               {content.title}
