@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { RightArrowIcon } from './icons/RightArrowIcon';
 import { AddItemButton } from './shared/AddItemButton';
 import { SectionControls } from './shared/SectionControls';
-import { EditField } from '../../admin/EditModal';
-import { EditableWrapper } from '../../admin/EditableWrapper';
+import { EditField } from '../admin/EditModal';
+import { EditableWrapper } from '../admin/EditableWrapper';
 import { CustomBlock } from './shared/CustomBlock';
 
 interface Feature {

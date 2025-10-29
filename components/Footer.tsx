@@ -4,8 +4,8 @@ import { TwitterXIcon } from './icons/TwitterXIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
 import { AddItemButton } from './shared/AddItemButton';
 import { EditSectionButton } from './shared/EditSectionButton';
-import { EditField } from '../../admin/EditModal';
-import { EditableWrapper } from '../../admin/EditableWrapper';
+import { EditField } from '../admin/EditModal';
+import { EditableWrapper } from '../admin/EditableWrapper';
 
 interface SocialLink {
     name: string;

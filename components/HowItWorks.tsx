@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { RightArrowIcon } from './icons/RightArrowIcon';
 import { Step1Icon, Step2Icon, Step3Icon, Step4Icon } from './icons/StepIcons';
 import { SectionControls } from './shared/SectionControls';
-import { EditField } from '../../admin/EditModal';
-import { EditableWrapper } from '../../admin/EditableWrapper';
+import { EditField } from '../admin/EditModal';
+import { EditableWrapper } from '../admin/EditableWrapper';
 import { CustomBlock } from './shared/CustomBlock';
 
 const stepIcons = [

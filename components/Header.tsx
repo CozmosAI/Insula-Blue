@@ -3,8 +3,8 @@ import { MenuIcon } from './icons/MenuIcon';
 import { XIcon } from './icons/XIcon';
 import { RightArrowIcon } from './icons/RightArrowIcon';
 import { AddItemButton } from './shared/AddItemButton';
-import { EditField } from '../../admin/EditModal';
-import { EditableWrapper } from '../../admin/EditableWrapper';
+import { EditField } from '../admin/EditModal';
+import { EditableWrapper } from '../admin/EditableWrapper';
 
 interface NavLink {
   name: string;

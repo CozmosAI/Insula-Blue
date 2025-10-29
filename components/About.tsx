@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SectionControls } from './shared/SectionControls';
-import { EditField } from '../../admin/EditModal';
-import { EditableWrapper } from '../../admin/EditableWrapper';
+import { EditField } from '../admin/EditModal';
+import { EditableWrapper } from '../admin/EditableWrapper';
 import { CustomBlock } from './shared/CustomBlock';
 
 interface AboutContent {
