@@ -36,7 +36,6 @@ interface AccordionItemProps {
   onCloseModal: () => void;
   index: number;
   content: FaqContent;
-  // FIX: Add onUpdate to props to make it available in the component.
   onUpdate: (path: string, value: any, action?: 'UPDATE' | 'ADD_ITEM' | 'DELETE_ITEM') => void;
 }
 
@@ -53,13 +52,11 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick, is
                   ],
                   () => {
                     if (window.confirm('Tem certeza que deseja excluir esta pergunta?')) {
-                      // FIX: 'onUpdate' was not defined. It's now passed as a prop.
                       onUpdate('faq.items', index, 'DELETE_ITEM');
                       onCloseModal();
                     }
                   },
                   () => {
-                      // FIX: 'onUpdate' was not defined. It's now passed as a prop.
                       onUpdate('faq.items', item, 'ADD_ITEM');
                       onCloseModal();
                   }
