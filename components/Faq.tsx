@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { PlusIcon } from './icons/PlusIcon';
 import { MinusIcon } from './icons/MinusIcon';
@@ -73,14 +74,13 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick, is
             style={{ 
               color: isOpen ? content.openQuestionColor : content.questionColor,
             }}
-        >
-          {item.question}
-        </h3>
+            dangerouslySetInnerHTML={{ __html: item.question }}
+        />
         <span>{isOpen ? <MinusIcon color={content.openQuestionColor} /> : <PlusIcon />}</span>
       </div>
       {isOpen && !isEditMode && (
         <div className="mt-4">
-          <p style={{ color: content.answerColor }}>{item.answer}</p>
+          <p style={{ color: content.answerColor }} dangerouslySetInnerHTML={{ __html: item.answer }} />
         </div>
       )}
     </div>
@@ -157,7 +157,7 @@ const Faq: React.FC<{
     <section 
       id="faq" 
       data-section-key={sectionKey}
-      className={`py-20 lg:py-32 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
+      className={`scroll-animate py-12 lg:py-20 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
       style={{ backgroundColor: content.backgroundColor }}
     >
        {isEditMode && (
@@ -189,6 +189,7 @@ const Faq: React.FC<{
             style={content.titleStyle}
             onUpdate={onUpdate}
             path="faq.titleStyle"
+            className="scroll-animate"
         >
             <h2 
                 className="font-semibold text-center mb-12 lg:mb-20 text-4xl sm:text-5xl"
@@ -198,9 +199,8 @@ const Faq: React.FC<{
                   { path: 'faq.title', label: 'Título', value: content.title, type: 'text' },
                   { path: 'faq.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
                 ])}
-            >
-              {content.title}
-            </h2>
+                dangerouslySetInnerHTML={{ __html: content.title }}
+            />
         </EditableWrapper>
         <div className="max-w-3xl mx-auto">
           {content.items.map((item, index) => (
@@ -213,8 +213,8 @@ const Faq: React.FC<{
               onDragLeave={handleDragLeave}
               onDrop={(e) => handleDrop(e, index, 'items')}
               onDragEnd={handleDragEnd}
-              style={{ cursor: isEditMode ? 'grab' : 'default' }}
-              className={`transition-all duration-200 ${draggedIndex?.list === 'items' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'items' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2 rounded-md' : ''}`}
+              style={{ cursor: isEditMode ? 'grab' : 'default', transitionDelay: `${index * 100}ms` }}
+              className={`transition-all duration-200 scroll-animate ${draggedIndex?.list === 'items' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'items' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2 rounded-md' : ''}`}
             >
               <AccordionItem
                 item={item}
@@ -253,7 +253,7 @@ const Faq: React.FC<{
                     onDragLeave={handleDragLeave}
                     onDrop={(e) => handleDrop(e, index, 'customBlocks')}
                     onDragEnd={handleDragEnd}
-                    className={`${draggedIndex?.list === 'customBlocks' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'customBlocks' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+                    className={`scroll-animate ${draggedIndex?.list === 'customBlocks' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'customBlocks' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
                 />
             ))}
         </div>

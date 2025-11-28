@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { XIcon } from '../components/icons/XIcon';
+import { TrashIcon } from '../components/icons/TrashIcon';
+import { CopyIcon } from '../components/icons/CopyIcon';
+
 
 export interface EditField {
     path: string;
@@ -11,48 +14,52 @@ export interface EditField {
 interface EditModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onSave: (updates: { path: string, value: any }[]) => void;
     title: string;
     fields: EditField[];
+    onUpdate: (path: string, value: any, action?: 'UPDATE' | 'ADD_ITEM' | 'DELETE_ITEM') => void;
+    content: any;
     onDelete?: () => void;
     onClone?: () => void;
 }
 
-const EditModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSave, title, fields, onDelete, onClone }) => {
-    const [fieldValues, setFieldValues] = useState<{ [key: string]: any }>({});
+const EditModal: React.FC<EditModalProps> = ({ isOpen, onClose, title, fields, onUpdate, content, onDelete, onClone }) => {
+    
+    const getInitialValues = () => {
+      return fields.reduce((acc, field) => {
+        const value = field.path.split(/[.\[\]]+/).filter(Boolean).reduce((o, k) => (o || {})[k], content);
+        acc[field.path] = value;
+        return acc;
+      }, {} as { [key: string]: any });
+    }
+
+    const [fieldValues, setFieldValues] = useState(getInitialValues);
 
     useEffect(() => {
         if (isOpen) {
-            const initialValues = fields.reduce((acc, field) => {
-                acc[field.path] = field.value;
-                return acc;
-            }, {} as { [key: string]: any });
-            setFieldValues(initialValues);
+            setFieldValues(getInitialValues());
         }
-    }, [isOpen, fields]);
+    }, [isOpen, fields, content]);
 
+
+    const handleChange = (path: string, value: any) => {
+        const newValues = { ...fieldValues, [path]: value };
+        setFieldValues(newValues);
+        
+        const field = fields.find(f => f.path === path);
+        // Handle multiline textarea for achievements
+        if (field?.label.includes('Realizações')) {
+             const stringValue = String(value ?? '').trim();
+             const achievements = stringValue ? stringValue.split('\n') : [];
+             onUpdate(path, achievements);
+        } else {
+            onUpdate(path, value);
+        }
+    };
+    
     if (!isOpen) {
         return null;
     }
 
-    const handleChange = (path: string, value: any) => {
-        setFieldValues(prev => ({ ...prev, [path]: value }));
-    };
-
-    const handleSave = () => {
-        const updates = Object.entries(fieldValues).map(([path, value]) => {
-            if (fields.find(f => f.path === path)?.label.includes('Realizações')) {
-                const stringValue = String(value ?? '').trim();
-                // If the textarea is empty after trimming, save an empty array. Otherwise, split by lines.
-                const achievements = stringValue ? stringValue.split('\n') : [];
-                return { path, value: achievements };
-            }
-            return { path, value };
-        });
-        onSave(updates);
-        onClose();
-    };
-    
     const renderField = (field: EditField) => {
         const value = fieldValues[field.path] ?? (field.type === 'boolean' ? false : '');
         switch (field.type) {
@@ -61,18 +68,18 @@ const EditModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSave, title, f
                     id={field.path}
                     value={value}
                     onChange={(e) => handleChange(field.path, e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-md bg-gray-50 h-40 text-gray-800"
-                    rows={5}
+                    className="w-full p-2 border border-gray-300 rounded-md bg-white h-32 text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    rows={4}
                 />;
             case 'color':
                 return (
-                    <div className="flex items-center gap-2 p-2 border border-gray-300 rounded-md bg-gray-50">
+                    <div className="flex items-center gap-2 p-2 border border-gray-300 rounded-md bg-white">
                         <input
                             type="color"
                             id={`${field.path}-color`}
                             value={value}
                             onChange={(e) => handleChange(field.path, e.target.value)}
-                            className="w-10 h-10 p-0 border-none rounded-md cursor-pointer bg-transparent"
+                            className="w-8 h-8 p-0 border-none rounded-md cursor-pointer bg-transparent"
                             style={{'WebkitAppearance': 'none', 'MozAppearance': 'none', 'appearance': 'none'}}
                         />
                         <input
@@ -80,21 +87,21 @@ const EditModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSave, title, f
                             id={field.path}
                             value={value}
                             onChange={(e) => handleChange(field.path, e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded-md bg-white text-gray-800 font-mono"
+                            className="w-full p-1 border border-gray-300 rounded-md bg-white text-gray-800 font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
                 );
             case 'boolean':
                 return (
-                     <label className="flex items-center space-x-3 cursor-pointer bg-gray-100 p-3 rounded-md">
+                     <label className="flex items-center space-x-3 cursor-pointer bg-white p-3 rounded-md border border-gray-300">
                         <input
                             type="checkbox"
                             id={field.path}
                             checked={!!value}
                             onChange={(e) => handleChange(field.path, e.target.checked)}
-                            className="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500"
+                            className="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
                         />
-                        <span className="text-gray-700 font-medium">Mostrar esta seção</span>
+                        <span className="text-gray-700 font-medium select-none">{field.label}</span>
                     </label>
                 );
             case 'image':
@@ -107,50 +114,46 @@ const EditModal: React.FC<EditModalProps> = ({ isOpen, onClose, onSave, title, f
                     id={field.path}
                     value={value}
                     onChange={(e) => handleChange(field.path, e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-800"
+                    className="w-full p-2 border border-gray-300 rounded-md bg-white text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />;
         }
     }
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-60 z-[10000] flex items-center justify-center p-4" onClick={onClose}>
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-lg flex flex-col max-h-[90vh]" onClick={e => e.stopPropagation()}>
-                <div className="flex justify-between items-center p-4 border-b border-gray-200">
-                    <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-                    <button onClick={onClose} className="text-gray-500 hover:text-gray-800">
+        <div className="modal-overlay" onClick={onClose}>
+            <div className="modal-content text-gray-800" onClick={(e) => e.stopPropagation()}>
+                <header className="flex justify-between items-center mb-4 pb-2 border-b border-gray-300">
+                    <h2 className="text-xl font-bold">{title}</h2>
+                    <button onClick={onClose} className="p-1 rounded-full hover:bg-gray-300">
                         <XIcon />
                     </button>
-                </div>
-                <div className="p-6 space-y-4 overflow-y-auto">
+                </header>
+                <main className="space-y-4">
                     {fields.map(field => (
                         <div key={field.path}>
-                            <label htmlFor={field.path} className="block text-sm font-medium text-gray-700 mb-1">{field.label}</label>
+                             {field.type !== 'boolean' && (
+                                <label htmlFor={field.path} className="block text-sm font-medium text-gray-600 mb-1">{field.label}</label>
+                            )}
                             {renderField(field)}
                         </div>
                     ))}
-                </div>
-                <div className="flex justify-between items-center p-4 bg-gray-50 border-t border-gray-200">
-                    <div>
-                        {onDelete && (
-                            <button onClick={onDelete} className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors">
-                                Excluir
-                            </button>
-                        )}
+                </main>
+                 {(onDelete || onClone) && (
+                    <footer className="mt-6 pt-4 border-t border-gray-300 flex justify-end gap-3">
                         {onClone && (
-                            <button onClick={onClone} className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors ml-2">
-                                Clonar
+                            <button onClick={onClone} className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
+                                <CopyIcon className="w-4 h-4" />
+                                <span>Clonar</span>
                             </button>
                         )}
-                    </div>
-                    <div className="flex justify-end gap-3">
-                        <button onClick={onClose} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
-                            Cancelar
-                        </button>
-                        <button onClick={handleSave} className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-                            Salvar Alterações
-                        </button>
-                    </div>
-                </div>
+                        {onDelete && (
+                            <button onClick={onDelete} className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors">
+                                <TrashIcon className="w-4 h-4" />
+                                <span>Excluir</span>
+                            </button>
+                        )}
+                    </footer>
+                )}
             </div>
         </div>
     );

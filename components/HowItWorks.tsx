@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { RightArrowIcon } from './icons/RightArrowIcon';
 import { Step1Icon, Step2Icon, Step3Icon, Step4Icon } from './icons/StepIcons';
@@ -114,7 +115,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
     <section 
       id="how-it-works" 
       data-section-key={sectionKey}
-      className={`py-20 lg:py-32 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
+      className={`scroll-animate py-12 lg:py-20 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
       style={{ backgroundColor: content.backgroundColor }}
     >
       {isEditMode && (
@@ -148,6 +149,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                     style={content.pretitleStyle}
                     onUpdate={onUpdate}
                     path="howItWorks.pretitleStyle"
+                    className="scroll-animate"
                  >
                     <p 
                       className="uppercase tracking-widest font-light mb-4 text-base md:text-lg"
@@ -157,15 +159,17 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                         { path: 'howItWorks.pretitle', label: 'Pré-título', value: content.pretitle, type: 'text' },
                         { path: 'howItWorks.pretitleColor', label: 'Cor do Pré-título', value: content.pretitleColor, type: 'color' },
                       ])}
-                   >{content.pretitle}</p>
+                      dangerouslySetInnerHTML={{ __html: content.pretitle }}
+                   />
                  </EditableWrapper>
                  <EditableWrapper
                     isEditMode={isEditMode}
                     isDraggable={true}
                     isResizable={false}
-                    style={content.titleStyle}
+                    style={{...content.titleStyle, transitionDelay: '150ms'}}
                     onUpdate={onUpdate}
                     path="howItWorks.titleStyle"
+                    className="scroll-animate"
                  >
                     <h2 
                       className="font-semibold leading-tight text-3xl sm:text-4xl lg:text-5xl"
@@ -178,8 +182,8 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                         { path: 'howItWorks.titleAccentColor', label: 'Cor de Destaque do Título', value: content.titleAccentColor, type: 'color' },
                       ])}
                    >
-                      <span>{content.titleStart}</span>
-                      <span style={{ color: content.titleAccentColor }}>{content.titleAccent}</span>
+                      <span dangerouslySetInnerHTML={{ __html: content.titleStart }} />
+                      <span style={{ color: content.titleAccentColor }} dangerouslySetInnerHTML={{ __html: content.titleAccent }} />
                    </h2>
                  </EditableWrapper>
             </div>
@@ -188,9 +192,10 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                 isEditMode={isEditMode}
                 isDraggable={true}
                 isResizable={false}
-                style={content.descriptionStyle}
+                style={{...content.descriptionStyle, transitionDelay: '300ms'}}
                 onUpdate={onUpdate}
                 path="howItWorks.descriptionStyle"
+                className="scroll-animate"
               >
                   <p 
                       className="text-base md:text-lg"
@@ -200,9 +205,8 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                         { path: 'howItWorks.description', label: 'Descrição', value: content.description, type: 'textarea' },
                         { path: 'howItWorks.descriptionColor', label: 'Cor da Descrição', value: content.descriptionColor, type: 'color' },
                       ])}
-                  >
-                      {content.description}
-                  </p>
+                      dangerouslySetInnerHTML={{ __html: content.description }}
+                  />
                 </EditableWrapper>
             </div>
         </div>
@@ -218,8 +222,8 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
               onDragLeave={handleDragLeave}
               onDrop={(e) => handleDrop(e, index, 'steps')}
               onDragEnd={handleDragEnd}
-              className={`p-6 rounded-md transition-all duration-200 ${draggedIndex?.list === 'steps' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'steps' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
-              style={{ backgroundColor: content.stepCardBackgroundColor, cursor: isEditMode ? 'grab' : 'default' }}
+              className={`p-6 rounded-md transition-all duration-200 scroll-animate ${draggedIndex?.list === 'steps' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'steps' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+              style={{ backgroundColor: content.stepCardBackgroundColor, cursor: isEditMode ? 'grab' : 'default', transitionDelay: `${index * 100}ms` }}
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal(`Editando Etapa ${index + 1}`, 
                 [
@@ -243,12 +247,14 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                     <h3 
                         className="font-semibold text-xl"
                         style={{ color: content.stepTitleColor }}
-                    >{step.title}</h3>
+                        dangerouslySetInnerHTML={{ __html: step.title }}
+                    />
                 </div>
               <p 
                 className="mt-4 text-sm"
                 style={{ color: content.stepDescriptionColor }}
-              >{step.description}</p>
+                dangerouslySetInnerHTML={{ __html: step.description }}
+              />
             </div>
           ))}
         </div>
@@ -275,12 +281,12 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                     onDragLeave={handleDragLeave}
                     onDrop={(e) => handleDrop(e, index, 'customBlocks')}
                     onDragEnd={handleDragEnd}
-                    className={`${draggedIndex?.list === 'customBlocks' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'customBlocks' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+                    className={`scroll-animate ${draggedIndex?.list === 'customBlocks' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'customBlocks' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
                 />
             ))}
         </div>
         
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 scroll-animate" style={{ transitionDelay: '200ms' }}>
             <EditableWrapper
                 isEditMode={isEditMode}
                 isDraggable={true}
@@ -307,7 +313,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ content, isEditMode, onUpdate, 
                     className="text-sm font-bold uppercase px-8 py-3 rounded-md hover:opacity-90 transition-opacity inline-flex items-center gap-3"
                     style={{ backgroundColor: content.ctaBackgroundColor, color: content.ctaTextColor }}
                   >
-                    <span>{content.ctaButton.text}</span>
+                    <span dangerouslySetInnerHTML={{ __html: content.ctaButton.text }} />
                     <RightArrowIcon className="w-3.5 h-3.5" />
                   </a>
               </div>

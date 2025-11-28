@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { RightArrowIcon } from './icons/RightArrowIcon';
 import { AddItemButton } from './shared/AddItemButton';
@@ -101,7 +102,7 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
         <section 
             id="why-us" 
             data-section-key={sectionKey}
-            className={`py-20 lg:py-32 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
+            className={`scroll-animate relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
             style={{ backgroundColor: content.backgroundColor }}
         >
              {isEditMode && (
@@ -126,41 +127,34 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                     isHidden={!content.show}
                 />
             )}
-            <div className="container mx-auto">
-                <EditableWrapper
-                    isEditMode={isEditMode}
-                    isDraggable={true}
-                    isResizable={true}
-                    style={content.imageStyle}
-                    onUpdate={onUpdate}
-                    path="whyUs.imageStyle"
-                    className="mb-12"
-                >
-                    <div 
-                        data-editable-img={isEditMode}
-                        onClick={() => isEditMode && onOpenModal('Editando Imagem', [
-                          { path: 'whyUs.imageUrl', label: 'URL da Imagem', value: content.imageUrl, type: 'image' }
-                        ])}
-                    >
-                        <img 
-                            loading="lazy" 
-                            decoding="async" 
-                            src={content.imageUrl}
-                            alt="Artistic depiction of hands" 
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
-                </EditableWrapper>
+            
+            <div 
+                className="w-full h-[300px] md:h-[400px] lg:h-[500px] scroll-animate"
+                data-editable-img={isEditMode}
+                onClick={() => isEditMode && onOpenModal('Editando Imagem', [
+                    { path: 'whyUs.imageUrl', label: 'URL da Imagem', value: content.imageUrl, type: 'image' }
+                ])}
+            >
+                <img 
+                    loading="lazy" 
+                    decoding="async" 
+                    src={content.imageUrl}
+                    alt="Team collaboration" 
+                    className="w-full h-full object-cover"
+                />
+            </div>
 
+            <div className="container mx-auto py-12 lg:py-20 px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     <div className="lg:col-span-1 space-y-6">
                         <EditableWrapper
                             isEditMode={isEditMode}
                             isDraggable={true}
                             isResizable={false}
-                            style={content.titleStyle}
+                            style={{...content.titleStyle, transitionDelay: '150ms'}}
                             onUpdate={onUpdate}
                             path="whyUs.titleStyle"
+                            className="scroll-animate"
                         >
                             <h2 
                                 className="font-semibold text-4xl sm:text-5xl"
@@ -170,16 +164,17 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                                   { path: 'whyUs.title', label: 'Título', value: content.title, type: 'text' },
                                   { path: 'whyUs.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
                                 ])}
-                            >{content.title}</h2>
+                                dangerouslySetInnerHTML={{ __html: content.title }}
+                            />
                         </EditableWrapper>
                         <EditableWrapper
                             isEditMode={isEditMode}
                             isDraggable={true}
                             isResizable={false}
-                            style={content.ctaButtonStyle}
+                            style={{...content.ctaButtonStyle, transitionDelay: '300ms'}}
                             onUpdate={onUpdate}
                             path="whyUs.ctaButtonStyle"
-                            className="inline-block"
+                            className="inline-block scroll-animate"
                         >
                              <div
                                 data-editable={isEditMode}
@@ -198,13 +193,13 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                                     className="inline-flex items-center gap-3 text-sm font-bold uppercase px-8 py-3 rounded-md hover:opacity-90 transition-opacity"
                                     style={{ backgroundColor: content.ctaBackgroundColor, color: content.ctaTextColor }}
                                 >
-                                    <span>{content.ctaButton.text}</span>
+                                    <span dangerouslySetInnerHTML={{ __html: content.ctaButton.text }} />
                                     <RightArrowIcon className="w-3.5 h-3.5" />
                                 </a>
                             </div>
                         </EditableWrapper>
                     </div>
-                    <div className="lg:col-span-2 grid md:grid-cols-1 gap-6">
+                    <div className="lg:col-span-2 space-y-6">
                         {content.features.map((feature, index) => (
                             <div 
                                 key={index} 
@@ -215,11 +210,12 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                                 onDragLeave={handleDragLeave}
                                 onDrop={(e) => handleDrop(e, index, 'features')}
                                 onDragEnd={handleDragEnd}
-                                className={`p-6 rounded-md relative group transition-all duration-200 ${draggedIndex?.list === 'features' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'features' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`} 
+                                className={`p-8 rounded-lg relative group transition-all duration-200 scroll-animate ${draggedIndex?.list === 'features' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'features' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`} 
                                 style={{ 
                                     backgroundColor: content.cardBackgroundColor, 
                                     color: content.cardTextColor,
                                     cursor: isEditMode ? 'grab' : 'default',
+                                    transitionDelay: `${(index + 2) * 150}ms`
                                 }}
                                 data-editable={isEditMode}
                                 onClick={() => isEditMode && onOpenModal(`Editando Característica ${index + 1}`, 
@@ -242,11 +238,13 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                                 <h3 
                                     className="font-semibold text-xl md:text-2xl"
                                     style={{ color: content.cardTitleColor }}
-                                >{feature.title}</h3>
-                                <hr className="w-1/3 border-t-2 my-4" style={{ borderColor: content.cardAccentColor }} />
+                                    dangerouslySetInnerHTML={{ __html: feature.title }}
+                                />
+                                <hr className="w-1/4 border-t my-4" style={{ borderColor: content.cardAccentColor }} />
                                 <p 
-                                    className="font-light"
-                                >{feature.description}</p>
+                                    className="font-light whitespace-pre-line"
+                                    dangerouslySetInnerHTML={{ __html: feature.description }}
+                                />
                             </div>
                         ))}
                         {isEditMode && <AddItemButton onClick={() => onUpdate('whyUs.features', newContentDefaults.feature, 'ADD_ITEM')} text="Add Feature" />}
@@ -275,7 +273,7 @@ const WhyUs: React.FC<WhyUsProps> = ({ content, isEditMode, onUpdate, newContent
                             onDragLeave={handleDragLeave}
                             onDrop={(e) => handleDrop(e, index, 'customBlocks')}
                             onDragEnd={handleDragEnd}
-                            className={`${draggedIndex?.list === 'customBlocks' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'customBlocks' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+                            className={`scroll-animate ${draggedIndex?.list === 'customBlocks' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'customBlocks' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
                         />
                     ))}
                 </div>

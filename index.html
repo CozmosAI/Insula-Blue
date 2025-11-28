@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insula Blue</title>
+    <meta name="color-scheme" content="light">
+    <title>Insula Blue - Estratégia Financeira e Patrimonial</title>
+    <meta name="description" content="A Insula Blue oferece consultoria estratégica em finanças e tributos, focada na construção e proteção de patrimônio. Conectamos você a oportunidades no Brasil e no exterior com planejamento sólido, eficiência fiscal e total confidencialidade." />
+    <meta name="keywords" content="consultoria financeira, planejamento tributário, gestão de patrimônio, investimentos, assessoria financeira, eficiência fiscal, planejamento sucessório, mercado financeiro, arquitetura aberta, atuação internacional, câmbio, hedge, M&A, portfólio de investimentos, fundos de investimento, tokenização, Insula Blue" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              orange: {
+              brand: {
                 '500': '#00263E',
                 '600': '#001a2b'
               }
@@ -21,22 +24,213 @@
       }
     </script>
     <style>
+      :root {
+        color-scheme: light;
+      }
       body {
         font-family: 'Inter', sans-serif;
+        /* Hides the default cursor */
+        cursor: none;
+        background-color: #F9FAFB; /* Ensure default bg is explicit */
       }
       html {
         scroll-behavior: smooth;
       }
-      [data-editable="true"]:hover, [data-editable="true"]:focus {
+      [data-editable="true"]:hover, [data-editable-img="true"]:hover {
         outline: 2px dashed #00A9FF;
         cursor: pointer;
-        background-color: rgba(0, 169, 255, 0.1);
       }
-      [data-editable-img="true"]:hover {
-        outline: 2px dashed #4CAF50;
-        cursor: pointer;
+      .scroll-animate {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+        transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+        will-change: opacity, transform;
+      }
+      .scroll-animate.is-visible {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+       .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-content {
+        background-color: #f3f4f6;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         position: relative;
-        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.3);
+      }
+      .chart-bar-inner {
+        width: 100%;
+        height: 0;
+        transition: height 1s ease-out;
+        will-change: height;
+      }
+      .scroll-animate.is-visible .chart-bar-inner {
+        height: var(--target-height, 0%);
+      }
+      .line-chart-path {
+        stroke-dasharray: var(--line-length);
+        stroke-dashoffset: var(--line-length);
+        transition: stroke-dashoffset 2s ease-in-out 0.3s;
+        will-change: stroke-dashoffset;
+      }
+      .scroll-animate.is-visible .line-chart-path {
+          stroke-dashoffset: 0;
+      }
+      .line-chart-area {
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out 1s;
+        will-change: opacity;
+      }
+      .scroll-animate.is-visible .line-chart-area {
+        opacity: 1;
+      }
+
+      /* Custom Cursor */
+      #cursor, #cursor-follower {
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        mix-blend-mode: difference;
+        opacity: 0;
+      }
+      #cursor {
+        width: 8px;
+        height: 8px;
+        background-color: white;
+        transition: opacity 0.3s;
+      }
+      #cursor-follower {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.3);
+        transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.3s, opacity 0.3s, width 0.3s, height 0.3s;
+      }
+      body:hover #cursor, body:hover #cursor-follower {
+        opacity: 1;
+      }
+      .cursor-hover {
+          transform: translate(-50%, -50%) scale(1.5);
+          background-color: rgba(255, 255, 255, 0.5);
+      }
+      @media (pointer: coarse) {
+        #cursor, #cursor-follower {
+          display: none;
+        }
+        body {
+          cursor: auto;
+        }
+      }
+
+      /* Card Shine Effect */
+      .service-card {
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card::before {
+        content: '';
+        position: absolute;
+        top: var(--y, 0);
+        left: var(--x, 0);
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 80%);
+        border-radius: 50%;
+        transition: width 0.4s ease-out, height 0.4s ease-out;
+        pointer-events: none;
+        opacity: 0;
+      }
+      .service-card:hover::before {
+        width: 300px;
+        height: 300px;
+        opacity: 1;
+      }
+
+      /* Custom Range Slider */
+      input[type=range] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        background: #e5e7eb; /* gray-200 */
+        border-radius: 5px;
+        outline: none;
+        opacity: 0.7;
+        transition: opacity .2s;
+      }
+      input[type=range]:hover {
+        opacity: 1;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #00263E;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid white;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      }
+      input[type=range]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: #00263E;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid white;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      }
+
+      /* Custom Radio Button for Quiz */
+      .quiz-option input[type="radio"] {
+        display: none;
+      }
+      .quiz-option label {
+        display: block;
+        padding: 1rem 1.5rem;
+        border: 2px solid #d1d5db; /* gray-300 */
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+      .quiz-option label:hover {
+        border-color: #00263E;
+        background-color: #f0f5f8;
+      }
+      .quiz-option input[type="radio"]:checked + label {
+        border-color: #00263E;
+        background-color: #00263E;
+        color: white;
+        box-shadow: 0 4px 14px 0 rgba(0, 38, 62, 0.3);
+      }
+
+      /* Animation for Calculator Values */
+      .value-pop {
+        display: inline-block;
+        animation: pop-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      @keyframes pop-in {
+        0% { transform: scale(0.95); opacity: 0.8; }
+        50% { transform: scale(1.05); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
       }
     </style>
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,6 +247,8 @@
 </script>
 </head>
   <body class="bg-gray-50">
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

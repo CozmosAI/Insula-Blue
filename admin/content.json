@@ -2,11 +2,12 @@
   "sectionOrder": [
     "hero",
     "about",
+    "charts",
     "whatWeDo",
     "howItWorks",
     "whyUs",
-    "team",
-    "featuredWork",
+    "interactiveTools",
+    "content",
     "media",
     "faq"
   ],
@@ -16,9 +17,9 @@
     "activeNavLinkColor": "#FFFFFF",
     "ctaBackgroundColor": "#FFFFFF",
     "ctaTextColor": "#00263E",
-    "logoUrl": "https://i.postimg.cc/QtT9YML3/Insula-Logos-6.png",
+    "logoUrl": "https://i.postimg.cc/9fjLn26R/Insula-Logos-8.png",
     "logoStyle": {
-      "width": "60.99609375px",
+      "width": "70px",
       "height": "55.99609375px",
       "position": "relative",
       "top": "0px",
@@ -30,25 +31,33 @@
         "href": "#hero"
       },
       {
-        "name": "Como funciona",
-        "href": "#how-it-works"
+        "name": "Soluções",
+        "href": "#what-we-do"
       },
       {
-        "name": "Por que nos escolher?",
-        "href": "#why-us"
+        "name": "Conteúdos",
+        "href": "#content"
       },
       {
-        "name": "Quem somos",
-        "href": "#team"
+        "name": "Contato",
+        "href": "#contact"
       }
     ],
     "navStyle": {
       "position": "relative",
       "top": "0px",
-      "left": "0px"
+      "left": "0px",
+      "fontSize": "1.2rem",
+      "gap": "2.5rem"
+    },
+    "navContainerStyle": {
+      "gap": "2rem"
+    },
+    "containerStyle": {
+      "maxWidth": "1280px"
     },
     "ctaButton": {
-      "text": "faça parte",
+      "text": "Fale Conosco",
       "href": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Insula%20Blue"
     },
     "ctaButtonStyle": {
@@ -64,8 +73,8 @@
     "subtitleColor": "#FFFFFF",
     "ctaBackgroundColor": "#00263E",
     "ctaTextColor": "#FFFFFF",
-    "title": "Construa seu patrimônio com solidez, elegância e confiança",
-    "subtitle": "Um conceito criado para quem valoriza discrição, conhecimento e estabilidade em cada decisão.",
+    "title": "Soluções inteligentes para proteger e expandir seu capital",
+    "subtitle": "A Insula Blue é o seu hub de estratégia financeira e tributária, conectando você e sua empresa às melhores oportunidades no Brasil e no exterior com assessoria técnica, eficiência fiscal e total segurança.",
     "titleFontSize": "3.75rem",
     "subtitleFontSize": "1.25rem",
     "titleStyle": {
@@ -84,7 +93,7 @@
       "left": "0px"
     },
     "ctaButton": {
-      "text": "CONVERSE CONOSCO",
+      "text": "FAlE CONOSCO",
       "href": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Insula%20Blue"
     },
     "videoUrl": "https://player.vimeo.com/video/1131484005?background=1",
@@ -102,34 +111,142 @@
     "backgroundColor": "#FFFFFF",
     "titleColor": "#1f2937",
     "accentColor": "#00263E",
-    "imageUrl": "https://i.postimg.cc/yYwBVtTG/Insula-Logos-7.png",
+    "imageUrl": "https://i.postimg.cc/05XMvzCt/492cbe801d7f8bd8609c2df85a3bb191.jpg",
     "imageStyle": {
       "width": "100%",
-      "height": "auto",
+      "height": "550px",
       "position": "relative",
       "top": "0px",
       "left": "0px",
-      "objectFit": "contain"
+      "objectFit": "cover"
     },
-    "title": "Planejamento inteligente, execução precisa e resultados sólidos.\nEstratégias criadas para quem busca crescer com discrição e confiança.",
+    "title": "Quem somos?",
     "titleFontSize": "3rem",
     "titleStyle": {
       "position": "relative",
       "top": "0px",
       "left": "0px"
     },
-    "customBlocks": []
+    "customBlocks": [
+      {
+        "type": "heading",
+        "text": "",
+        "style": {
+          "fontSize": "2.25rem",
+          "color": "#1f2937",
+          "lineHeight": "1.2"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "A <b>Insula Blue</b> é seu Hub de soluções financeiras, tributárias e investimentos junto ao mercado financeiro nacional e internacional. Você e sua empresa podem contar com a mais elevada assessoria técnica e segurança através de um portfólio completo de soluções personalizadas.",
+        "style": {
+          "fontSize": "1.125rem",
+          "color": "#4b5563",
+          "lineHeight": "1.75"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "Nosso objetivo é ajudar todo e qualquer cliente a <b>tomar as melhores decisões financeiras</b>, sempre zelando pelo <b>maior retorno, segurança e eficiência tributária</b> no curto e longo prazo.\n",
+        "style": {
+          "fontSize": "1.125rem",
+          "color": "#4b5563",
+          "lineHeight": "1.75"
+        }
+      },
+      {
+        "type": "paragraph",
+        "text": "<b>Confie-nos a sua solução financeira e tributária</b>, ajudando-nos a <b>ampliar as possibilidades de um futuro melhor para você</b> e aqueles que realmente importam.",
+        "style": {
+          "fontSize": "1.125rem",
+          "color": "#4b5563",
+          "lineHeight": "1.75"
+        }
+      }
+    ]
+  },
+  "charts": {
+    "show": false,
+    "backgroundColor": "#000000",
+    "titleColor": "#FFFFFF",
+    "lineColorWithIB": "#00A9FF",
+    "lineColorWithoutIB": "#6B7280",
+    "gridColor": "#374151",
+    "labelColor": "#E5E7EB",
+    "title": "Crescimento e Estratégia em Números",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "items": [
+      {
+        "label": "Crescimento Patrimonial",
+        "withIB": [
+          10,
+          30,
+          45,
+          70,
+          95
+        ],
+        "withoutIB": [
+          10,
+          20,
+          25,
+          30,
+          35
+        ]
+      },
+      {
+        "label": "Eficiência Tributária",
+        "withIB": [
+          20,
+          40,
+          65,
+          80,
+          92
+        ],
+        "withoutIB": [
+          20,
+          25,
+          28,
+          32,
+          40
+        ]
+      },
+      {
+        "label": "Segurança e Proteção",
+        "withIB": [
+          15,
+          50,
+          75,
+          85,
+          98
+        ],
+        "withoutIB": [
+          15,
+          20,
+          22,
+          25,
+          28
+        ]
+      }
+    ]
   },
   "whatWeDo": {
     "show": true,
-    "backgroundColor": "#27272a",
-    "pretitleColor": "#ffffff",
+    "backgroundColor": "#000000",
+    "pretitleColor": "#9ca3af",
     "titleColor": "#FFFFFF",
     "cardBackgroundColor": "#00263E",
+    "cardBorderColor": "#FFFFFF33",
+    "cardHoverBorderColor": "#FFFFFF",
+    "iconColor": "#FFFFFF",
     "cardTitleColor": "#FFFFFF",
-    "cardTextColor": "#FFFFFFE6",
+    "cardTextColor": "#FFFFFFCC",
     "pretitle": "SOLIDEZ, CLAREZA E ESTRATÉGIA PARA O CRESCIMENTO DO SEU PATRIMÔNIO",
-    "title": "O que fazemos na prática?",
+    "title": "SOLUÇÕES",
     "pretitleFontSize": "1.25rem",
     "titleFontSize": "3.75rem",
     "cardTitleFontSize": "1.25rem",
@@ -145,28 +262,49 @@
     },
     "services": [
       {
-        "name": "Estruturação inteligente do seu patrimônio",
-        "description": "Desenvolvemos uma arquitetura patrimonial personalizada, combinando conhecimento técnico e análise estratégica para proteger, equilibrar e potencializar seus ativos."
+        "icon": "architecture",
+        "name": "Fundos de Investimento e Otimização Tributaria",
+        "description": "• Estruturação de fundos de investimentos.\n• Captação de recursos junto a fundos de investimentos e investidores.\n• Redesenho institucional via fundos e otimização tributária.\n"
       },
       {
-        "name": "Otimização do que você já possui",
-        "description": "Identificamos oportunidades de melhorar o desempenho e reduzir riscos com base no que você já construiu.\nCada decisão é guiada por análise, experiência e propósito."
+        "icon": "globe",
+        "name": "Portfólio de Investimentos",
+        "description": "• Otimização de portfólio e estratégias de investimentos.\n• Assessoria alinhada ao perfil de investimentos e necessidades.\n"
       },
       {
-        "name": "Planejamento financeiro sob medida",
-        "description": "Criamos planos alinhados à sua realidade, metas e visão de futuro.\nUm trabalho confidencial, contínuo e estratégico, voltado à estabilidade e longevidade financeira."
+        "icon": "currency",
+        "name": "Tokenização & Blockchain Services",
+        "description": "• Tokenize ativos, estruturação, capitação digital e profissional.\n• Mercado alternativo de investimentos (RWA).\n"
       },
       {
-        "name": "Suporte à continuidade patrimonial",
-        "description": "Garantimos que o seu patrimônio seja preservado e transmitido com segurança, evitando burocracias e riscos desnecessários. Planejamento claro e estratégias sólidas para proteger o que você construiu e cuidar de quem você ama."
+        "icon": "credit",
+        "name": "Planejamento Financeiro, Tributário e Sucessório",
+        "description": "• Horizonte de planejamento e distribuição do patrimônio.\n• Avaliação de riscos, proteção, sucessão e eficiência tributária.\n• A quatro mãos com os melhores escritórios de advocacia do Brasil e do exterior.\n"
       },
       {
-        "name": "Acompanhamento dedicado e transparente",
-        "description": "Um relacionamento constante, confidencial e orientado por estratégia. A IB atua com total transparência, oferecendo insights, análises e diretrizes para cada decisão relevante."
+        "icon": "shield",
+        "name": "M&A e DCM (Debt Capital Markets)",
+        "description": "• Processos de aquisição e venda, parcial ou integral, de negócios.\n• Estruturação e distribuição de dívidas (CRIs, CRAs e Debêntures).\n"
       },
       {
-        "name": "Proteção integral do patrimônio",
-        "description": "Segurança e controle absoluto sobre o que é seu.\nNossas estruturas priorizam autonomia, estabilidade e independência, garantindo que cada ativo esteja protegido com inteligência e discrição."
+        "icon": "document",
+        "name": "Acesso ao Mercado de Ilíquidos",
+        "description": "• Soluções via fundos de Private Equity, Venture Capital e Seed Money.\n"
+      },
+      {
+        "icon": "handshake",
+        "name": "Crédito & Banking Services",
+        "description": "• Ajudamos as pessoas físicas e jurídicas no Brasil e no exterior com as melhores soluções de capital.\n• Demais serviços de banking e financiamentos tradicionais.\n"
+      },
+      {
+        "icon": "graph",
+        "name": "Atuação Internacional & Câmbio",
+        "description": "• Auxílio na constituição dos veículos apropriados.\n• Aconselhamento sobre as melhores estratégias de investimentos.\n• Intermediação em operações de câmbio e soluções de Hedge.\n"
+      },
+      {
+        "icon": "pieChart",
+        "name": "Arquitetura Aberta",
+        "description": "• Originação e análise de operações nas diversas classes de ativos.\n• Visão agnóstica em relação as diferentes contrapartes."
       }
     ],
     "customBlocks": []
@@ -213,19 +351,19 @@
     },
     "steps": [
       {
-        "title": "Entendimento profundo",
+        "title": "Entendimento Profundo",
         "description": "Antes de qualquer decisão, realizamos uma análise detalhada do seu cenário atual — objetivos, perfil e prioridades.\nEssa etapa define o ponto de partida com clareza e propósito."
       },
       {
-        "title": "Arquitetura patrimonial",
-        "description": "Estruturamos uma visão completa do seu patrimônio, identificando pontos de melhoria, proteção e crescimento. Nosso objetivo é construir bases sólidas para decisões duradouras."
+        "title": "Arquitetura Global",
+        "description": "Estruturamos uma visão completa da sua necessidade, identificando pontos de melhoria, proteção e crescimento. Nosso objetivo é construir bases sólidas para decisões duradouras."
       },
       {
-        "title": "Planejamento estratégico",
+        "title": "Planejamento Estratégico",
         "description": "Com base na análise, traçamos um plano personalizado e racional, que equilibra risco, estabilidade e metas de longo prazo. Cada escolha é feita com foco em segurança e resultados reais."
       },
       {
-        "title": "Consultor\nconfidencial",
+        "title": "Consultoria Confidencial",
         "description": "Mantemos um acompanhamento contínuo, ajustando estratégias conforme as mudanças do mercado e do seu momento de vida.\nDiscrição, transparência e solidez em cada passo."
       }
     ],
@@ -245,14 +383,8 @@
     "cardTitleColor": "#FFFFFF",
     "cardTextColor": "#FFFFFF",
     "cardAccentColor": "#FFFFFF",
-    "imageUrl": "https://i.postimg.cc/dQgn07QL/Insula-Logos-5.png",
-    "imageStyle": {
-      "width": "977.94921875px",
-      "height": "508.2109375px",
-      "position": "relative",
-      "top": "-113px",
-      "left": "126px"
-    },
+    "imageUrl": "https://i.postimg.cc/cJkTwxSv/Design-sem-nome-(10).png",
+    "imageStyle": {},
     "title": "Por que a Insula Blue?",
     "titleFontSize": "3.75rem",
     "cardTitleFontSize": "1.5rem",
@@ -267,7 +399,7 @@
       "left": "0px"
     },
     "ctaButton": {
-      "text": "CONVERSE CONOSCO",
+      "text": "FALE CONOSCO",
       "href": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Insula%20Blue"
     },
     "features": [
@@ -286,14 +418,242 @@
     ],
     "customBlocks": []
   },
-  "team": {
+  "interactiveTools": {
     "show": true,
+    "backgroundColor": "#f9fafb",
+    "titleColor": "#111827",
+    "descriptionColor": "#4b5563",
+    "title": "Ferramentas Interativas",
+    "description": "Simule o crescimento do seu patrimônio e descubra seu perfil de investidor com nossas ferramentas exclusivas. Planeje seu futuro com mais clareza e confiança.",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "calculator": {
+      "tabTitle": "Calculadora do Investidor",
+      "title": "Calculadora do Investidor",
+      "initialAmountLabel": "Aporte Inicial",
+      "monthlyContributionLabel": "Aporte Mensal",
+      "annualRateLabel": "Taxa de Juros Anual (%)",
+      "yearsLabel": "Período (anos)",
+      "buttonText": "Calcular Crescimento",
+      "resultsTitle": "Resultado da Simulação",
+      "futureValueLabel": "Valor Final Acumulado",
+      "totalInvestedLabel": "Total Investido",
+      "totalInterestLabel": "Total em Juros",
+      "chartLineColor": "#00A9FF",
+      "chartPrincipalColor": "#00263E"
+    },
+    "quiz": {
+      "tabTitle": "Perfil de Investidor",
+      "title": "Qual é o seu Perfil de Investidor?",
+      "buttonText": "Avançar",
+      "backButtonText": "Voltar",
+      "resultsButtonText": "Ver Meu Perfil",
+      "retakeButtonText": "Refazer Quiz",
+      "questions": [
+        {
+          "text": "Qual é o seu principal objetivo ao investir?",
+          "options": [
+            {
+              "text": "Preservar meu capital com segurança máxima.",
+              "score": 1
+            },
+            {
+              "text": "Um equilíbrio entre crescimento e segurança.",
+              "score": 3
+            },
+            {
+              "text": "Maximizar o crescimento, mesmo com riscos maiores.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "text": "Por quanto tempo você pretende manter seus investimentos?",
+          "options": [
+            {
+              "text": "Menos de 2 anos.",
+              "score": 1
+            },
+            {
+              "text": "Entre 2 e 7 anos.",
+              "score": 3
+            },
+            {
+              "text": "Mais de 7 anos.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "text": "Como você reagiria a uma queda de 20% no valor dos seus investimentos em um único mês?",
+          "options": [
+            {
+              "text": "Venderia tudo para evitar mais perdas.",
+              "score": 1
+            },
+            {
+              "text": "Manteria a posição, mas ficaria preocupado.",
+              "score": 3
+            },
+            {
+              "text": "Aproveitaria para investir mais a preços baixos.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "text": "Qual porcentagem do seu patrimônio você se sente confortável em alocar em ativos de alto risco (como ações)?",
+          "options": [
+            {
+              "text": "Menos de 10%.",
+              "score": 1
+            },
+            {
+              "text": "Entre 10% e 40%.",
+              "score": 3
+            },
+            {
+              "text": "Acima de 40%.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "text": "Seu conhecimento sobre o mercado financeiro é:",
+          "options": [
+            {
+              "text": "Iniciante, conheço apenas o básico.",
+              "score": 1
+            },
+            {
+              "text": "Intermediário, acompanho o mercado e entendo os principais produtos.",
+              "score": 3
+            },
+            {
+              "text": "Avançado, tenho experiência e tomo minhas próprias decisões.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "text": "Qual a sua expectativa de retorno para os seus investimentos?",
+          "options": [
+            {
+              "text": "Abaixo da média do mercado, com alta segurança.",
+              "score": 1
+            },
+            {
+              "text": "Na média do mercado, com risco equilibrado.",
+              "score": 3
+            },
+            {
+              "text": "Acima da média do mercado, aceitando alta volatilidade.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "text": "Seus investimentos representam qual parte do seu patrimônio total?",
+          "options": [
+            {
+              "text": "A maior parte, é meu principal ativo.",
+              "score": 1
+            },
+            {
+              "text": "Uma parte considerável, importante para o futuro.",
+              "score": 3
+            },
+            {
+              "text": "Uma pequena parte, não dependo deles.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "profile": "Conservador",
+          "scoreRange": [
+            7,
+            15
+          ],
+          "description": "Seu perfil prioriza a segurança e a preservação do capital. Você prefere investimentos de baixo risco, mesmo que isso signifique uma rentabilidade menor. Estratégias com foco em renda fixa e ativos estáveis são as mais indicadas para você.",
+          "ctaText": "Conheça nossas soluções conservadoras"
+        },
+        {
+          "profile": "Moderado",
+          "scoreRange": [
+            16,
+            26
+          ],
+          "description": "Você busca um equilíbrio entre segurança e rentabilidade. Está disposto a correr um risco calculado para obter retornos maiores, mas sem abrir mão da estabilidade. Uma carteira diversificada com renda fixa e uma parcela em renda variável é ideal para seu perfil.",
+          "ctaText": "Descubra estratégias moderadas"
+        },
+        {
+          "profile": "Agressivo",
+          "scoreRange": [
+            27,
+            35
+          ],
+          "description": "Seu foco principal é a maximização dos lucros no longo prazo, e você entende que, para isso, é preciso assumir riscos maiores. Você tem tolerância à volatilidade do mercado e busca oportunidades em ativos com alto potencial de crescimento.",
+          "ctaText": "Explore investimentos agressivos"
+        }
+      ]
+    }
+  },
+  "content": {
+    "show": true,
+    "backgroundColor": "#FFFFFF",
+    "titleColor": "#1f2937",
+    "subtitle": "Explore nossos insights e soluções. Materiais, mentorias e eventos desenhados para aprofundar seu conhecimento e fortalecer sua estratégia.",
+    "subtitleColor": "#4b5563",
+    "cardBackgroundColor": "#00263E",
+    "cardTitleColor": "#FFFFFF",
+    "cardTextColor": "#FFFFFFCC",
+    "cardLinkColor": "#FFFFFF",
+    "iconColor": "#FFFFFF",
+    "hoverBorderColor": "#FFFFFF",
+    "title": "Conteúdos",
+    "titleStyle": {
+      "position": "relative",
+      "top": "0px",
+      "left": "0px"
+    },
+    "items": [
+      {
+        "icon": "mentorship",
+        "title": "MENTORIA",
+        "description": "Solução personalizada que busca diagnosticar com precisão suas necessidades financeiras e tributárias, otimizando o atendimento e maximizando resultados.",
+        "ctaText": "SAIBA MAIS",
+        "ctaHref": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Mentoria"
+      },
+      {
+        "icon": "events",
+        "title": "CURSOS, EVENTOS & PALESTRAS",
+        "description": "Desenvolvemos experiências de aprendizado in company, ajustadas às necessidades específicas da sua equipe para impulsionar o conhecimento e a performance.",
+        "ctaText": "SAIBA MAIS",
+        "ctaHref": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20Cursos%20e%20Eventos"
+      },
+      {
+        "icon": "materials",
+        "title": "MATERIAIS ESTRATÉGICOS",
+        "description": "Acesse nosso FAQ e materiais exclusivos para encontrar respostas e insights sobre nossos serviços, filosofia de trabalho e estratégias de mercado.",
+        "ctaText": "ACESSAR FAQ",
+        "ctaHref": "#faq"
+      }
+    ]
+  },
+  "team": {
+    "show": false,
     "backgroundColor": "#000000",
     "titleColor": "#FFFFFF",
     "memberNameColor": "#FFFFFF",
     "memberTitleColor": "#00263E",
     "memberTextColor": "#d1d5db",
-    "title": "Quem somos?",
+    "title": "",
     "titleFontSize": "3.75rem",
     "memberNameFontSize": "1.5rem",
     "memberTitleFontSize": "1.125rem",
@@ -306,7 +666,7 @@
     "customBlocks": [
       {
         "type": "paragraph",
-        "text": "A IB (Insula Blue) é uma estrutura construída sobre confiança, conhecimento e discrição.\nNascemos com o propósito de unir estratégia, inteligência e estabilidade, oferecendo um caminho sólido e silencioso para quem valoriza o essencial.",
+        "text": "",
         "style": {
           "fontSize": "1.125rem",
           "color": "#e5e7eb",
@@ -315,7 +675,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Nossa atuação é pautada pela análise profunda, execução precisa e ética absoluta.\nNão buscamos visibilidade — buscamos resultados consistentes e relacionamentos duradouro's.",
+        "text": "",
         "style": {
           "fontSize": "1.125rem",
           "color": "#e5e7eb",
@@ -324,7 +684,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Cada decisão dentro da IB é tomada com base em dados, experiência e propósito.\nTrabalhamos de forma independente e confidencial, respeitando o tempo e a individualidade de cada cliente.",
+        "text": "",
         "style": {
           "fontSize": "1.125rem",
           "color": "#e5e7eb",
@@ -372,7 +732,7 @@
     "customBlocks": []
   },
   "media": {
-    "show": false,
+    "show": true,
     "backgroundColor": "#f3f4f6",
     "titleColor": "#1f2937",
     "title": "Insula Blue na Mídia",
@@ -382,26 +742,38 @@
       "top": "0px",
       "left": "0px"
     },
-    "articles": [
+    "posts": [
       {
         "href": "",
-        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/1-NOTICIA-9.jpg"
+        "imageUrl": "",
+        "platform": "instagram",
+        "caption": "Em breve",
+        "likes": 124,
+        "comments": 12
+      },
+      {
+        "href": "#",
+        "imageUrl": "",
+        "platform": "linkedin",
+        "caption": "Em breve",
+        "likes": 0,
+        "comments": 0
       },
       {
         "href": "",
-        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/1-NOTICIA-10.jpg"
+        "imageUrl": "",
+        "platform": "instagram",
+        "caption": "Em breve",
+        "likes": 231,
+        "comments": 25
       },
       {
         "href": "",
-        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/1-NOTICIA-11.jpg"
-      },
-      {
-        "href": "",
-        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/1-NOTICIA-12.jpg"
-      },
-      {
-        "href": "",
-        "imageUrl": "https://altside.com/wp-content/uploads/2025/08/NOTICIA-13.jpg"
+        "imageUrl": "",
+        "platform": "linkedin",
+        "caption": "Em breve",
+        "likes": 42,
+        "comments": 5
       }
     ],
     "customBlocks": []
@@ -423,16 +795,16 @@
     },
     "items": [
       {
-        "question": "Quais serviços a Insula Blue oferece?",
-        "answer": "A IB atua com estruturação patrimonial, planejamento financeiro estratégico e suporte contínuo em proteção e crescimento de ativos.\nNossos serviços são direcionados à organização, preservação e evolução de patrimônio, sempre com total confidencialidade e precisão."
+        "question": "Quais soluções a Insula Blue oferece?",
+        "answer": "A IB atua com uma gama de soluções para pessoas físicas e jurídicas como estruturação patrimonial, planejamento financeiro e sucessório, proteção patrimonial, tokenização de ativos, otimização de portfólio e outras. Nossas soluções são direcionados à organização, preservação e evolução de contante, sempre com total confidencialidade, solidez e precisão.\n"
       },
       {
         "question": "Quem pode fazer a consultoria?",
-        "answer": "A IB atende pessoas e famílias que valorizam estabilidade, discrição e planejamento de longo prazo.\nNossa estrutura é voltada a quem busca crescer com inteligência e segurança, independentemente do estágio atual de patrimônio."
+        "answer": "A IB atende pessoas, famílias e empresas que valorizam estabilidade, discrição e planejamento de longo prazo. Nossa estrutura é voltada a quem busca crescer com inteligência e segurança, independentemente do estágio atual.\n"
       },
       {
-        "question": "Como é feita a cobrança?",
-        "answer": "Trabalhamos com modelo transparente e proporcional ao escopo de acompanhamento.\nNão há taxas ocultas, nem cobranças fixas inflexíveis — tudo é definido com clareza, previsibilidade e alinhamento de interesses."
+        "question": "Quanto custa?",
+        "answer": "Trabalhamos com modelo transparente e proporcional ao escopo de atividades. Não há taxas ocultas, nem cobranças indevidas — tudo é definido com o cliente as claras e alinhado com o interesse.\n"
       },
       {
         "question": "Existem multas no cancelamento?",
@@ -466,12 +838,12 @@
       },
       {
         "name": "linkedin",
-        "href": "https://www.linkedin.com/company/insulablue"
+        "href": "https://www.linkedin.com/company/insula-blue-consultoria/posts/?feedView=all"
       }
     ],
     "contact": {
       "email": "insulablue@gmail.com",
-      "phone": "48 9696-9403"
+      "phone": ""
     },
     "contactStyle": {
       "position": "relative",
@@ -481,7 +853,7 @@
     "legal": {
       "privacyPolicyLink": "#",
       "privacyPolicyText": "Política de Privacidade",
-      "cnpj": "00.000.000/0000-00"
+      "cnpj": "56.965.612/0001-73"
     },
     "legalStyle": {
       "position": "relative",
@@ -490,16 +862,83 @@
     }
   },
   "_newContentDefaults": {
-    "navLink": { "name": "New Link", "href": "#" },
-    "service": { "name": "New Service", "description": "Enter a description for the new service here." },
-    "feature": { "title": "New Feature", "description": "Describe the new feature." },
-    "teamMember": { "name": "New Member", "title": "Position", "imageUrl": "https://via.placeholder.com/500", "achievements": ["New achievement"] },
-    "project": { "name": "New Project", "category": "Category", "imageUrl": "https://via.placeholder.com/800x600" },
-    "article": { "href": "#", "imageUrl": "https://via.placeholder.com/400x300" },
-    "faqItem": { "question": "New Question?", "answer": "Answer to the new question." },
-    "socialLink": { "name": "instagram", "href": "#" },
-    "customBlockHeading": { "type": "heading", "text": "New Heading", "style": { "fontSize": "2rem", "color": "#1f2937" } },
-    "customBlockParagraph": { "type": "paragraph", "text": "This is a new paragraph. Click to edit this text.", "style": { "fontSize": "1rem", "color": "#4b5563" } },
-    "customBlockImage": { "type": "image", "imageUrl": "https://via.placeholder.com/1200x400", "style": { "width": "100%", "height": "auto" } }
+    "navLink": {
+      "name": "New Link",
+      "href": "#"
+    },
+    "service": {
+      "icon": "default",
+      "name": "New Service",
+      "description": "• Enter a description for the new service here."
+    },
+    "feature": {
+      "title": "New Feature",
+      "description": "Describe the new feature."
+    },
+    "teamMember": {
+      "name": "New Member",
+      "title": "Position",
+      "imageUrl": "https://via.placeholder.com/500",
+      "achievements": [
+        "New achievement"
+      ]
+    },
+    "project": {
+      "name": "New Project",
+      "category": "Category",
+      "imageUrl": "https://via.placeholder.com/800x600"
+    },
+    "mediaPost": {
+      "href": "#",
+      "imageUrl": "https://via.placeholder.com/500x500",
+      "platform": "instagram",
+      "caption": "Esta é uma nova publicação. Clique para editar.",
+      "likes": 0,
+      "comments": 0
+    },
+    "faqItem": {
+      "question": "New Question?",
+      "answer": "Answer to the new question."
+    },
+    "socialLink": {
+      "name": "instagram",
+      "href": "#"
+    },
+    "contentItem": {
+      "icon": "materials",
+      "title": "Novo Item",
+      "description": "Descreva o novo item aqui.",
+      "ctaText": "Saiba Mais",
+      "ctaHref": "#"
+    },
+    "chartItem": {
+      "label": "Novo Gráfico",
+      "withIB": "10, 20, 40, 70, 90",
+      "withoutIB": "10, 15, 20, 25, 30"
+    },
+    "customBlockHeading": {
+      "type": "heading",
+      "text": "New Heading",
+      "style": {
+        "fontSize": "2rem",
+        "color": "#1f2937"
+      }
+    },
+    "customBlockParagraph": {
+      "type": "paragraph",
+      "text": "This is a new paragraph. Click to edit this text.",
+      "style": {
+        "fontSize": "1rem",
+        "color": "#4b5563"
+      }
+    },
+    "customBlockImage": {
+      "type": "image",
+      "imageUrl": "https://via.placeholder.com/1200x400",
+      "style": {
+        "width": "100%",
+        "height": "auto"
+      }
+    }
   }
 }

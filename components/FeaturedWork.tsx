@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { AddItemButton } from './shared/AddItemButton';
 import { SectionControls } from './shared/SectionControls';
+// Fix: Corrected import path for EditField
 import { EditField } from '../admin/EditModal';
 import { EditableWrapper } from '../admin/EditableWrapper';
 import { CustomBlock } from './shared/CustomBlock';
@@ -96,7 +98,7 @@ const FeaturedWork: React.FC<FeaturedWorkProps> = ({ content, isEditMode, onUpda
         <section 
             id="featured-work"
             data-section-key={sectionKey}
-            className={`py-20 lg:py-32 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
+            className={`scroll-animate py-12 lg:py-20 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
             style={{ backgroundColor: content.backgroundColor }}
         >
              {isEditMode && (
@@ -125,6 +127,7 @@ const FeaturedWork: React.FC<FeaturedWorkProps> = ({ content, isEditMode, onUpda
                     style={content.titleStyle}
                     onUpdate={onUpdate}
                     path="featuredWork.titleStyle"
+                    className="scroll-animate"
                 >
                     <h2 
                         className="font-bold text-center mb-12 lg:mb-20 text-4xl sm:text-5xl"
@@ -134,9 +137,8 @@ const FeaturedWork: React.FC<FeaturedWorkProps> = ({ content, isEditMode, onUpda
                           { path: 'featuredWork.title', label: 'Título', value: content.title, type: 'text' },
                           { path: 'featuredWork.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
                         ])}
-                    >
-                        {content.title}
-                    </h2>
+                        dangerouslySetInnerHTML={{ __html: content.title }}
+                    />
                 </EditableWrapper>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {content.projects.map((project, index) => (
@@ -149,8 +151,8 @@ const FeaturedWork: React.FC<FeaturedWorkProps> = ({ content, isEditMode, onUpda
                             onDragLeave={handleDragLeave}
                             onDrop={(e) => handleDrop(e, index, 'projects')}
                             onDragEnd={handleDragEnd}
-                            className={`group relative overflow-hidden rounded-lg transition-all duration-200 ${draggedIndex?.list === 'projects' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'projects' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
-                            style={{ cursor: isEditMode ? 'grab' : 'default' }}
+                            className={`group relative overflow-hidden rounded-lg transition-all duration-200 scroll-animate ${draggedIndex?.list === 'projects' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'projects' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+                            style={{ cursor: isEditMode ? 'grab' : 'default', transitionDelay: `${index * 150}ms` }}
                         >
                             <div 
                                 data-editable-img={isEditMode} 
@@ -175,8 +177,8 @@ const FeaturedWork: React.FC<FeaturedWorkProps> = ({ content, isEditMode, onUpda
                             >
                                 <img src={project.imageUrl} alt={project.name} className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" />
                                 <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-8 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                                  <p className="text-gray-300 text-sm">{project.category}</p>
-                                  <h3 className="text-2xl font-bold text-white">{project.name}</h3>
+                                  <p className="text-gray-300 text-sm" dangerouslySetInnerHTML={{ __html: project.category }} />
+                                  <h3 className="text-2xl font-bold text-white" dangerouslySetInnerHTML={{ __html: project.name }} />
                                 </div>
                             </div>
                         </div>
@@ -205,11 +207,11 @@ const FeaturedWork: React.FC<FeaturedWorkProps> = ({ content, isEditMode, onUpda
                             onDragLeave={handleDragLeave}
                             onDrop={(e) => handleDrop(e, index, 'customBlocks')}
                             onDragEnd={handleDragEnd}
-                            className={`${draggedIndex?.list === 'customBlocks' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'customBlocks' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+                            className={`scroll-animate ${draggedIndex?.list === 'customBlocks' && draggedIndex.index === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex?.list === 'customBlocks' && dragOverIndex.index === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
                         />
                     ))}
                 </div>
-                <div className="text-center mt-16">
+                <div className="text-center mt-16 scroll-animate" style={{ transitionDelay: '200ms' }}>
                     <EditableWrapper
                         isEditMode={isEditMode}
                         isDraggable={true}
@@ -238,7 +240,7 @@ const FeaturedWork: React.FC<FeaturedWorkProps> = ({ content, isEditMode, onUpda
                               onMouseOver={e => { e.currentTarget.style.backgroundColor = content.ctaHoverBackgroundColor; e.currentTarget.style.color = content.ctaHoverTextColor; }}
                               onMouseOut={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = content.ctaTextColor; }}
                           >
-                               <span>{content.ctaButton.text}</span>
+                               <span dangerouslySetInnerHTML={{ __html: content.ctaButton.text }} />
                           </a>
                         </div>
                     </EditableWrapper>

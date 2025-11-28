@@ -1,7 +1,7 @@
+
 import React, { useState } from 'react';
 import { SectionControls } from './shared/SectionControls';
 import { EditField } from '../admin/EditModal';
-import { EditableWrapper } from '../admin/EditableWrapper';
 import { CustomBlock } from './shared/CustomBlock';
 
 interface AboutContent {
@@ -81,12 +81,12 @@ const About: React.FC<AboutProps> = ({ content, isEditMode, onUpdate, onOpenModa
     <section 
       id="about"
       data-section-key={sectionKey}
-      className={`py-20 lg:py-32 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
+      className={`scroll-animate py-12 lg:py-20 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
       style={{ backgroundColor: content.backgroundColor }}
     >
       {isEditMode && (
           <SectionControls
-            onEdit={() => onOpenModal('Editando Seção Sobre', [
+            onSelect={() => onOpenModal('Editando Seção Sobre', [
               { path: 'about.show', label: 'Visibilidade da Seção', value: content.show, type: 'boolean' },
               { path: 'about.backgroundColor', label: 'Cor de Fundo', value: content.backgroundColor, type: 'color' },
             ])}
@@ -102,38 +102,34 @@ const About: React.FC<AboutProps> = ({ content, isEditMode, onUpdate, onOpenModa
             isHidden={!content.show}
           />
       )}
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <EditableWrapper
-            isEditMode={isEditMode}
-            isDraggable={true}
-            isResizable={true}
-            style={content.imageStyle}
-            onUpdate={onUpdate}
-            path="about.imageStyle"
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div
+            style={{
+                ...content.imageStyle,
+                objectFit: undefined
+            }}
+            className="scroll-animate relative overflow-hidden rounded-lg shadow-xl"
+            data-editable-img={isEditMode}
+            onClick={() => isEditMode && onOpenModal('Editando Imagem', [
+                { path: 'about.imageUrl', label: 'URL da Imagem', value: content.imageUrl, type: 'image' },
+                { path: 'about.imageStyle.width', label: 'Largura (ex: 100%, 500px)', value: content.imageStyle?.width || '100%', type: 'size' },
+                { path: 'about.imageStyle.height', label: 'Altura (ex: auto, 400px)', value: content.imageStyle?.height || 'auto', type: 'size' },
+                { path: 'about.imageStyle.objectFit', label: 'Ajuste (cover, contain)', value: content.imageStyle?.objectFit || 'cover', type: 'text' }
+            ])}
         >
-            <div 
-                data-editable-img={isEditMode}
-                onClick={() => isEditMode && onOpenModal('Editando Imagem', [
-                    { path: 'about.imageUrl', label: 'URL da Imagem', value: content.imageUrl, type: 'image' }
-                ])}
-            >
-              <img 
-                decoding="async" 
-                src={content.imageUrl} 
-                className="w-full h-full object-cover" 
-                alt="Illustration of a person holding a chart" 
-              />
-            </div>
-        </EditableWrapper>
-        <div className="flex flex-col">
-          <hr className="w-1/4 border-t-[10px] mb-6" style={{ borderColor: content.accentColor }} />
-          <EditableWrapper
-            isEditMode={isEditMode}
-            isDraggable={true}
-            isResizable={false}
-            style={content.titleStyle}
-            onUpdate={onUpdate}
-            path="about.titleStyle"
+          <img 
+            decoding="async" 
+            src={content.imageUrl} 
+            className="w-full h-full"
+            style={{ objectFit: content.imageStyle?.objectFit || 'cover' }} 
+            alt="Illustration of a person holding a chart" 
+          />
+        </div>
+        <div className="flex flex-col items-start text-left">
+          <hr className="w-1/4 border-t-[10px] mb-6 scroll-animate" style={{ borderColor: content.accentColor, transitionDelay: '150ms' }} />
+          <div
+            style={{...content.titleStyle, transitionDelay: '300ms'}}
+            className="scroll-animate"
           >
             <h2 
               className="font-semibold leading-tight text-3xl sm:text-4xl lg:text-5xl"
@@ -144,11 +140,10 @@ const About: React.FC<AboutProps> = ({ content, isEditMode, onUpdate, onOpenModa
                   { path: 'about.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
                   { path: 'about.accentColor', label: 'Cor de Destaque', value: content.accentColor, type: 'color' },
               ])}
-            >
-              {content.title}
-            </h2>
-          </EditableWrapper>
-           <div className="mt-8 space-y-6">
+              dangerouslySetInnerHTML={{ __html: content.title }}
+            />
+          </div>
+           <div className="mt-8 space-y-6 w-full">
                 {content.customBlocks?.map((block, index) => (
                     <CustomBlock
                         key={index}
@@ -163,6 +158,7 @@ const About: React.FC<AboutProps> = ({ content, isEditMode, onUpdate, onOpenModa
                                 onUpdate(`${sectionKey}.customBlocks`, index, 'DELETE_ITEM');
                             }
                         }}
+                        onClone={() => onUpdate(`${sectionKey}.customBlocks`, block, 'ADD_ITEM')}
                         isDraggable={isEditMode}
                         onDragStart={(e) => handleDragStart(e, index)}
                         onDragOver={handleDragOver}
@@ -170,7 +166,7 @@ const About: React.FC<AboutProps> = ({ content, isEditMode, onUpdate, onOpenModa
                         onDragLeave={handleDragLeave}
                         onDrop={(e) => handleDrop(e, index)}
                         onDragEnd={handleDragEnd}
-                        className={`${draggedIndex === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+                        className={`scroll-animate ${draggedIndex === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
                     />
                 ))}
             </div>
