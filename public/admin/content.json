@@ -633,7 +633,7 @@
       {
         "icon": "events",
         "title": "CURSOS, EVENTOS & PALESTRAS",
-        "description": "Desenvolvemos experiências de aprendizado in company, ajustadas às necessidades específicas da sua equipe para impulsionar o conhecimento e a performance.",
+        "description": "Desenvolvemos experiências de aprendizado <i>in company</i>, ajustadas às necessidades específicas da sua equipe para impulsionar o conhecimento e a performance.",
         "ctaText": "SAIBA MAIS",
         "ctaHref": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20Cursos%20e%20Eventos"
       },
@@ -805,10 +805,6 @@
       {
         "question": "Quanto custa?",
         "answer": "Trabalhamos com modelo transparente e proporcional ao escopo de atividades. Não há taxas ocultas, nem cobranças indevidas — tudo é definido com o cliente as claras e alinhado com o interesse.\n"
-      },
-      {
-        "question": "",
-        "answer": ""
       }
     ],
     "customBlocks": []
