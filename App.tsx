@@ -112,7 +112,8 @@ const App: React.FC = () => {
       .catch(error => console.error('Error fetching content:', error));
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key.toUpperCase() === 'A') {
+      // Shortcut: Control + Shift + Alt + R
+      if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.altKey && event.key.toUpperCase() === 'R') {
         event.preventDefault();
         setIsEditMode(prev => !prev);
         if (isEditMode) handleCloseModal(); // Close modal if exiting edit mode
