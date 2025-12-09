@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -231,7 +232,7 @@ const App: React.FC = () => {
   }, []);
 
   const handleUpdate = (path: string, value: any, action?: 'UPDATE' | 'ADD_ITEM' | 'DELETE_ITEM') => {
-    setContent(prevContent => updateStateByPath(prevContent, path, value, action));
+    setContent((prevContent: any) => updateStateByPath(prevContent, path, value, action));
   };
   
   const handleOpenModal = (title: string, fields: EditField[], onDelete?: () => void, onClone?: () => void) => {

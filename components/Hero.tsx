@@ -100,7 +100,7 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, sectionKey, 
     >
       {isEditMode && (
           <SectionControls
-            onSelect={() => onOpenModal('Editando Seção Hero', [
+            onEdit={() => onOpenModal('Editando Seção Hero', [
               { path: 'hero.show', label: 'Visibilidade da Seção', value: content.show, type: 'boolean' },
               { path: 'hero.backgroundColor', label: 'Cor de Fundo', value: content.backgroundColor, type: 'color' },
             ])}
@@ -215,6 +215,7 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, sectionKey, 
                 title="Hero video"
                 frameBorder="0"
                 allow="autoplay"
+                loading="eager"
                 key={content.videoUrl}
                 onLoad={() => setIsVideoLoaded(true)}
               ></iframe>

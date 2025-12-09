@@ -67,6 +67,7 @@ interface InteractiveToolsProps {
     onDeleteSection: (sectionKey: string) => void;
     isFirst: boolean;
     isLast: boolean;
+    onOpenModal: (title: string, fields: EditField[], onDelete?: () => void, onClone?: () => void) => void;
 }
 
 // --- HELPERS ---
@@ -278,7 +279,7 @@ const RiskQuiz: React.FC<{ content: QuizContent }> = ({ content }) => {
     };
 
     const calculateResult = () => {
-        const totalScore = answers.reduce((acc, score) => acc + (score || 0), 0);
+        const totalScore = answers.reduce<number>((acc, score) => acc + (score || 0), 0);
         const finalResult = content.results.find(r => totalScore >= r.scoreRange[0] && totalScore <= r.scoreRange[1]);
         setResult(finalResult || null);
     };

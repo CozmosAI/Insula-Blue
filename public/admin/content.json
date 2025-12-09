@@ -93,10 +93,10 @@
       "left": "0px"
     },
     "ctaButton": {
-      "text": "FAlE CONOSCO",
+      "text": "FALE CONOSCO",
       "href": "https://wa.me/554896969403?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Insula%20Blue"
     },
-    "videoUrl": "https://player.vimeo.com/video/1131484005?background=1",
+    "videoUrl": "https://player.vimeo.com/video/1131484005?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&dnt=1",
     "videoStyle": {
       "position": "relative",
       "top": "50px",

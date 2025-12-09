@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { EditField } from '../../admin/EditModal';
-import { TrashIcon } from '../icons/TrashIcon';
 
 interface Block {
     type: 'heading' | 'paragraph' | 'image';
@@ -16,7 +15,7 @@ interface CustomBlockProps {
     onUpdate: (path: string, value: any, action?: 'UPDATE' | 'ADD_ITEM' | 'DELETE_ITEM') => void;
     path: string;
     onDelete: () => void;
-    onClone: () => void;
+    onClone?: () => void;
     onOpenModal: (title: string, fields: EditField[], onDelete?: () => void, onClone?: () => void) => void;
     onCloseModal: () => void;
     isDraggable?: boolean;

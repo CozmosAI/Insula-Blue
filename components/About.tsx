@@ -86,7 +86,7 @@ const About: React.FC<AboutProps> = ({ content, isEditMode, onUpdate, onOpenModa
     >
       {isEditMode && (
           <SectionControls
-            onSelect={() => onOpenModal('Editando Seção Sobre', [
+            onEdit={() => onOpenModal('Editando Seção Sobre', [
               { path: 'about.show', label: 'Visibilidade da Seção', value: content.show, type: 'boolean' },
               { path: 'about.backgroundColor', label: 'Cor de Fundo', value: content.backgroundColor, type: 'color' },
             ])}
