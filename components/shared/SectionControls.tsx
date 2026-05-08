@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PencilIcon } from '../icons/PencilIcon';
 import { TrashIcon } from '../icons/TrashIcon';

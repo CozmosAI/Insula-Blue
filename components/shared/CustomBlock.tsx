@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { EditField } from '../../admin/EditModal';
 
@@ -13,11 +12,10 @@ interface CustomBlockProps {
     block: Block;
     isEditMode: boolean;
     onUpdate: (path: string, value: any, action?: 'UPDATE' | 'ADD_ITEM' | 'DELETE_ITEM') => void;
-    path: string;
-    onDelete: () => void;
-    onClone?: () => void;
     onOpenModal: (title: string, fields: EditField[], onDelete?: () => void, onClone?: () => void) => void;
     onCloseModal: () => void;
+    path: string;
+    onDelete: () => void;
     isDraggable?: boolean;
     onDragStart?: (e: React.DragEvent) => void;
     onDragOver?: (e: React.DragEvent) => void;
@@ -29,34 +27,34 @@ interface CustomBlockProps {
 }
 
 export const CustomBlock: React.FC<CustomBlockProps> = ({ 
-    block, isEditMode, onUpdate, path, onDelete, onClone, onOpenModal, onCloseModal,
+    block, isEditMode, onUpdate, onOpenModal, onCloseModal, path, onDelete,
     isDraggable, onDragStart, onDragOver, onDragEnter, onDragLeave, onDrop, onDragEnd, className = '' 
 }) => {
-
-    const handleOpenEditModal = () => {
+    
+    const openEditModal = () => {
         let fields: EditField[] = [];
-        let label = '';
+        let title = '';
 
         switch(block.type) {
             case 'heading':
-                label = 'Editando Título';
+                title = 'Editando Título';
                 fields = [
-                    { path: `${path}.text`, label: 'Texto', value: block.text || '', type: 'text' },
+                    { path: `${path}.text`, label: 'Texto do Título', value: block.text || '', type: 'text' },
                     { path: `${path}.style.fontSize`, label: 'Tamanho da Fonte (ex: 2rem)', value: block.style?.fontSize || '2rem', type: 'size' },
                     { path: `${path}.style.color`, label: 'Cor do Texto', value: block.style?.color || '#000000', type: 'color' },
                 ];
                 break;
             case 'paragraph':
-                label = 'Editando Parágrafo';
+                title = 'Editando Parágrafo';
                 fields = [
-                    { path: `${path}.text`, label: 'Texto', value: block.text || '', type: 'textarea' },
+                    { path: `${path}.text`, label: 'Texto do Parágrafo', value: block.text || '', type: 'textarea' },
                     { path: `${path}.style.fontSize`, label: 'Tamanho da Fonte (ex: 1rem)', value: block.style?.fontSize || '1rem', type: 'size' },
                     { path: `${path}.style.color`, label: 'Cor do Texto', value: block.style?.color || '#000000', type: 'color' },
                     { path: `${path}.style.lineHeight`, label: 'Altura da Linha (ex: 1.75)', value: block.style?.lineHeight || '1.75', type: 'text' },
                 ];
                 break;
             case 'image':
-                 label = 'Editando Imagem';
+                 title = 'Editando Imagem';
                 fields = [
                     { path: `${path}.imageUrl`, label: 'URL da Imagem', value: block.imageUrl || '', type: 'image' },
                     { path: `${path}.style.width`, label: 'Largura (ex: 100% or 500px)', value: block.style?.width || '100%', type: 'size' },
@@ -64,18 +62,26 @@ export const CustomBlock: React.FC<CustomBlockProps> = ({
                 ];
                 break;
         }
-        
-        onOpenModal(label, fields, onDelete, onClone);
+
+        const sectionKey = path.split('.')[0];
+        const onClone = () => {
+            onUpdate(`${sectionKey}.customBlocks`, { ...block }, 'ADD_ITEM');
+            onCloseModal();
+        };
+
+        onOpenModal(title, fields, () => {
+            onDelete();
+            onCloseModal();
+        }, onClone);
     };
     
     const renderBlock = () => {
         const style = { ...block.style, whiteSpace: 'pre-line' } as React.CSSProperties;
-
         switch (block.type) {
             case 'heading':
-                return <h2 style={style} dangerouslySetInnerHTML={{ __html: block.text || '' }} />;
+                return <h2 style={style}>{block.text}</h2>;
             case 'paragraph':
-                return <p style={style} dangerouslySetInnerHTML={{ __html: block.text || '' }} />;
+                return <p style={style}>{block.text}</p>;
             case 'image':
                 return <img src={block.imageUrl} style={block.style} alt="Custom content" />;
             default:
@@ -85,7 +91,9 @@ export const CustomBlock: React.FC<CustomBlockProps> = ({
 
     return (
         <div 
-            className={`relative group transition-all duration-200 ${className}`}
+            data-editable={isEditMode}
+            onClick={() => isEditMode && openEditModal()}
+            className={`relative transition-all duration-200 ${className}`}
             draggable={isDraggable}
             onDragStart={onDragStart}
             onDragOver={onDragOver}
@@ -93,8 +101,7 @@ export const CustomBlock: React.FC<CustomBlockProps> = ({
             onDragLeave={onDragLeave}
             onDrop={onDrop}
             onDragEnd={onDragEnd}
-            data-editable={isEditMode}
-            onClick={() => isEditMode && handleOpenEditModal()}
+            style={{ cursor: isDraggable ? 'grab' : 'pointer' }}
         >
             {renderBlock()}
         </div>

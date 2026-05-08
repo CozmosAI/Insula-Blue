@@ -1,11 +1,9 @@
-
 import React, { useState } from 'react';
 import { InstagramIcon } from './icons/InstagramIcon';
 import { TwitterXIcon } from './icons/TwitterXIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
 import { AddItemButton } from './shared/AddItemButton';
 import { EditSectionButton } from './shared/EditSectionButton';
-// Fix: Corrected import path for EditField
 import { EditField } from '../admin/EditModal';
 import { EditableWrapper } from '../admin/EditableWrapper';
 
@@ -117,7 +115,7 @@ const Footer: React.FC<FooterProps> = ({ content, isEditMode, onUpdate, newConte
 
 
     return (
-        <footer id="contact" className="relative scroll-animate" style={{ backgroundColor, color: textColor }}>
+        <footer id="contact" className="relative" style={{ backgroundColor, color: textColor }}>
              {isEditMode && (
                 <EditSectionButton
                   onClick={() => onOpenModal('Editando Estilos do Rodapé', [
@@ -131,7 +129,7 @@ const Footer: React.FC<FooterProps> = ({ content, isEditMode, onUpdate, newConte
             )}
             <div className="container mx-auto px-6 py-16">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-                    <div className="scroll-animate">
+                    <div>
                         <EditableWrapper
                             isEditMode={isEditMode}
                             isDraggable={true}
@@ -203,10 +201,9 @@ const Footer: React.FC<FooterProps> = ({ content, isEditMode, onUpdate, newConte
                         isEditMode={isEditMode}
                         isDraggable={true}
                         isResizable={false}
-                        style={{...contactStyle, transitionDelay: '150ms'}}
+                        style={contactStyle}
                         onUpdate={onUpdate}
                         path="footer.contactStyle"
-                        className="scroll-animate"
                     >
                         <div 
                             className="space-y-2"
@@ -217,8 +214,8 @@ const Footer: React.FC<FooterProps> = ({ content, isEditMode, onUpdate, newConte
                             ])}
                         >
                             <h3 className="font-bold tracking-wider" style={{color: titleColor}}>Fale Conosco:</h3>
-                            <p dangerouslySetInnerHTML={{ __html: contact.email }} />
-                            <p dangerouslySetInnerHTML={{ __html: contact.phone }} />
+                            <p>{contact.email}</p>
+                            <p>{contact.phone}</p>
                         </div>
                     </EditableWrapper>
 
@@ -226,10 +223,9 @@ const Footer: React.FC<FooterProps> = ({ content, isEditMode, onUpdate, newConte
                         isEditMode={isEditMode}
                         isDraggable={true}
                         isResizable={false}
-                        style={{...legalStyle, transitionDelay: '300ms'}}
+                        style={legalStyle}
                         onUpdate={onUpdate}
                         path="footer.legalStyle"
-                        className="scroll-animate"
                     >
                         <div 
                             className="space-y-2"
@@ -248,10 +244,10 @@ const Footer: React.FC<FooterProps> = ({ content, isEditMode, onUpdate, newConte
                                     onMouseOver={e => e.currentTarget.style.color = linkHoverColor}
                                     onMouseOut={e => e.currentTarget.style.color = linkColor}
                                 >
-                                    <span dangerouslySetInnerHTML={{ __html: legal.privacyPolicyText }} />
+                                    <span>{legal.privacyPolicyText}</span>
                                 </a>
                             </div>
-                            <p>CNPJ: <span dangerouslySetInnerHTML={{ __html: legal.cnpj }} /></p>
+                            <p>CNPJ: <span>{legal.cnpj}</span></p>
                         </div>
                     </EditableWrapper>
 

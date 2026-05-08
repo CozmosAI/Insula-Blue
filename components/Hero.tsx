@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
 import { RightArrowIcon } from './icons/RightArrowIcon';
 import { SectionControls } from './shared/SectionControls';
-import { CustomBlock } from './shared/CustomBlock';
 import { EditField } from '../admin/EditModal';
+import { EditableWrapper } from '../admin/EditableWrapper';
+import { CustomBlock } from './shared/CustomBlock';
 
 interface HeroContent {
   show: boolean;
@@ -32,17 +32,17 @@ interface HeroProps {
     content: HeroContent;
     isEditMode: boolean;
     onUpdate: (path: string, value: any, action?: 'UPDATE' | 'ADD_ITEM' | 'DELETE_ITEM') => void;
+    onOpenModal: (title: string, fields: EditField[], onDelete?: () => void, onClone?: () => void) => void;
+    onCloseModal: () => void;
     sectionKey: string;
     onMoveSection: (sectionKey: string, direction: 'up' | 'down') => void;
     onDeleteSection: (sectionKey: string) => void;
     isFirst: boolean;
     isLast: boolean;
     newContentDefaults: any;
-    onOpenModal: (title: string, fields: EditField[], onDelete?: () => void, onClone?: () => void) => void;
-    onCloseModal: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, sectionKey, onMoveSection, onDeleteSection, isFirst, isLast, onOpenModal, onCloseModal, newContentDefaults }) => {
+const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, onOpenModal, onCloseModal, sectionKey, onMoveSection, onDeleteSection, isFirst, isLast }) => {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -95,7 +95,7 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, sectionKey, 
     <section 
       id="hero"
       data-section-key={sectionKey}
-      className={`scroll-animate min-h-screen flex items-center pt-32 pb-16 md:pt-40 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
+      className={`min-h-screen flex items-center pt-32 pb-16 md:pt-40 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
       style={{ backgroundColor: content.backgroundColor }}
     >
       {isEditMode && (
@@ -116,33 +116,57 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, sectionKey, 
             isHidden={!content.show}
           />
       )}
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <div style={content.titleStyle}>
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col justify-center">
+          <EditableWrapper
+            isEditMode={isEditMode}
+            isDraggable={true}
+            isResizable={false}
+            style={content.titleStyle}
+            onUpdate={onUpdate}
+            path="hero.titleStyle"
+          >
             <h1 
-              className="font-semibold leading-tight text-4xl sm:text-5xl lg:text-6xl scroll-animate" 
+              className="font-serif font-semibold leading-[1.1] text-4xl sm:text-5xl lg:text-6xl xl:text-7xl" 
               style={{ color: content.titleColor }}
-              dangerouslySetInnerHTML={{ __html: content.title }}
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal('Editando Título Principal', [
-                  { path: 'hero.title', label: 'Título', value: content.title, type: 'textarea' },
-                  { path: 'hero.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
+                { path: 'hero.title', label: 'Título', value: content.title, type: 'textarea' },
+                { path: 'hero.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
               ])}
+              dangerouslySetInnerHTML={{ __html: content.title }} 
             />
-          </div>
-          <div style={{...content.subtitleStyle, transitionDelay: '150ms'}} className="mt-6 scroll-animate">
+          </EditableWrapper>
+          <EditableWrapper
+            isEditMode={isEditMode}
+            isDraggable={true}
+            isResizable={false}
+            style={content.subtitleStyle}
+            onUpdate={onUpdate}
+            path="hero.subtitleStyle"
+            className="mt-8"
+          >
             <p 
-              className="font-light text-lg sm:text-xl"
+              className="font-light text-lg sm:text-xl lg:text-2xl opacity-90 leading-relaxed max-w-xl"
               style={{ color: content.subtitleColor }}
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal('Editando Subtítulo', [
-                  { path: 'hero.subtitle', label: 'Subtítulo', value: content.subtitle, type: 'textarea' },
-                  { path: 'hero.subtitleColor', label: 'Cor do Subtítulo', value: content.subtitleColor, type: 'color' },
+                { path: 'hero.subtitle', label: 'Subtítulo', value: content.subtitle, type: 'textarea' },
+                { path: 'hero.subtitleColor', label: 'Cor do Subtítulo', value: content.subtitleColor, type: 'color' },
               ])}
-              dangerouslySetInnerHTML={{ __html: content.subtitle }}
-            />
-          </div>
-          <div style={{...content.ctaButtonStyle, transitionDelay: '300ms'}} className="inline-block mt-8 scroll-animate">
+            >
+              {content.subtitle}
+            </p>
+          </EditableWrapper>
+          <EditableWrapper
+            isEditMode={isEditMode}
+            isDraggable={true}
+            isResizable={false}
+            style={content.ctaButtonStyle}
+            onUpdate={onUpdate}
+            path="hero.ctaButtonStyle"
+            className="inline-block mt-10"
+          >
             <div 
               data-editable={isEditMode}
               onClick={() => isEditMode && onOpenModal('Editando Botão CTA', [
@@ -157,15 +181,15 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, sectionKey, 
                 onClick={e => { if (isEditMode) e.preventDefault(); }}
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center gap-3 text-sm font-bold uppercase px-8 py-3 rounded-md hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-4 text-sm font-bold uppercase tracking-widest px-10 py-4 rounded-full hover:scale-105 transition-transform shadow-lg hover:shadow-2xl"
                 style={{ backgroundColor: content.ctaBackgroundColor, color: content.ctaTextColor }}
               >
-                <span dangerouslySetInnerHTML={{ __html: content.ctaButton.text }} />
-                <RightArrowIcon className="w-3.5 h-3.5" />
+                <span>{content.ctaButton.text}</span>
+                <RightArrowIcon className="w-4 h-4" />
               </a>
             </div>
-          </div>
-          <div className="mt-8 space-y-6">
+          </EditableWrapper>
+          <div className="mt-10 space-y-6">
               {content.customBlocks?.map((block, index) => (
                   <CustomBlock
                       key={index}
@@ -180,7 +204,6 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, sectionKey, 
                               onUpdate(`${sectionKey}.customBlocks`, index, 'DELETE_ITEM');
                           }
                       }}
-                      onClone={() => onUpdate(`${sectionKey}.customBlocks`, block, 'ADD_ITEM')}
                       isDraggable={isEditMode}
                       onDragStart={(e) => handleDragStart(e, index)}
                       onDragOver={handleDragOver}
@@ -188,39 +211,43 @@ const Hero: React.FC<HeroProps> = ({ content, isEditMode, onUpdate, sectionKey, 
                       onDragLeave={handleDragLeave}
                       onDrop={(e) => handleDrop(e, index)}
                       onDragEnd={handleDragEnd}
-                      className={`scroll-animate ${draggedIndex === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+                      className={`${draggedIndex === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
                   />
               ))}
           </div>
         </div>
-        <div 
-          style={{...content.videoStyle, transitionDelay: '200ms'}} 
-          className="scroll-animate"
-          data-editable-img={isEditMode}
-          onClick={() => isEditMode && onOpenModal('Editando Vídeo', [
-              { path: 'hero.videoUrl', label: 'URL do Vídeo (Vimeo embed)', value: content.videoUrl, type: 'video' },
-              { path: 'hero.videoStyle.width', label: 'Largura', value: content.videoStyle.width, type: 'size'},
-              { path: 'hero.videoStyle.height', label: 'Altura', value: content.videoStyle.height, type: 'size'},
-          ])}
+        <EditableWrapper
+            isEditMode={isEditMode}
+            isDraggable={true}
+            isResizable={true}
+            style={content.videoStyle}
+            onUpdate={onUpdate}
+            path="hero.videoStyle"
         >
-            <div className="w-full h-full aspect-square relative bg-gray-900 rounded-lg overflow-hidden">
+            <div 
+              className="w-full h-full aspect-square relative bg-gray-900 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/5"
+              data-editable-img={isEditMode}
+              onClick={() => isEditMode && onOpenModal('Editando Vídeo', [
+                { path: 'hero.videoUrl', label: 'URL do Vídeo (Vimeo embed)', value: content.videoUrl, type: 'video' }
+              ])}
+            >
               {!isVideoLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-gray-500"></div>
                 </div>
               )}
               <iframe
-                className={`w-full h-full rounded-lg pointer-events-none transition-opacity duration-500 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`} 
+                className={`w-full h-full rounded-lg pointer-events-none transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`} 
                 src={content.videoUrl} 
                 title="Hero video"
                 frameBorder="0"
                 allow="autoplay"
-                loading="eager"
                 key={content.videoUrl}
                 onLoad={() => setIsVideoLoaded(true)}
               ></iframe>
+              <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/10 rounded-2xl"></div>
             </div>
-        </div>
+        </EditableWrapper>
       </div>
     </section>
   );

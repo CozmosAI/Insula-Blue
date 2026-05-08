@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { AddItemButton } from './shared/AddItemButton';
 import { SectionControls } from './shared/SectionControls';
@@ -94,7 +93,7 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
     <section 
       id="team" 
       data-section-key={sectionKey}
-      className={`scroll-animate py-12 lg:py-20 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
+      className={`py-20 lg:py-32 px-6 relative ${!content.show && isEditMode ? 'opacity-50 border-2 border-dashed border-red-400' : ''}`} 
       style={{ backgroundColor: content.backgroundColor }}
     >
       {isEditMode && (
@@ -119,7 +118,7 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
           />
       )}
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
             <div className="lg:col-span-1">
                  <EditableWrapper
                     isEditMode={isEditMode}
@@ -128,22 +127,20 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
                     style={content.titleStyle}
                     onUpdate={onUpdate}
                     path="team.titleStyle"
-                    className="scroll-animate"
                  >
                     <h2 
-                      className="font-semibold text-4xl sm:text-5xl"
+                      className="font-serif font-semibold text-5xl lg:text-6xl leading-tight"
                       style={{ color: content.titleColor }}
                       data-editable={isEditMode}
                       onClick={() => isEditMode && onOpenModal('Editando Título da Seção', [
                         { path: 'team.title', label: 'Título', value: content.title, type: 'text' },
                         { path: 'team.titleColor', label: 'Cor do Título', value: content.titleColor, type: 'color' },
                       ])}
-                      dangerouslySetInnerHTML={{ __html: content.title }}
-                   />
+                   >{content.title}</h2>
                  </EditableWrapper>
             </div>
             <div className="lg:col-span-2">
-                <div className="space-y-6">
+                <div className="space-y-8">
                     {content.customBlocks?.map((block, index) => (
                         <CustomBlock
                             key={index}
@@ -165,13 +162,13 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
                             onDragLeave={handleDragLeave}
                             onDrop={(e) => handleDrop(e, index)}
                             onDragEnd={handleDragEnd}
-                            className={`scroll-animate ${draggedIndex === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+                            className={`${draggedIndex === index ? 'opacity-50 scale-95 shadow-2xl' : ''} ${dragOverIndex === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
                         />
                     ))}
                 </div>
                 
                 {(content.members.length > 0 || isEditMode) && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
                         {content.members.map((member, memberIndex) => {
                             if (!member.name && !isEditMode) return null;
 
@@ -208,8 +205,7 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
                             return (
                                 <div 
                                 key={memberIndex} 
-                                className="flex flex-col relative group scroll-animate"
-                                style={{ transitionDelay: `${memberIndex * 150}ms` }}
+                                className="flex flex-col relative group"
                                 data-editable={isEditMode}
                                 onClick={() => isEditMode && onOpenModal(`Editando Membro: ${member.name}`, 
                                     [
@@ -230,23 +226,25 @@ const Team: React.FC<TeamProps> = ({ content, isEditMode, onUpdate, newContentDe
                                     }
                                 )}
                                 >
-                                    <div>
-                                        <img src={member.imageUrl} alt={member.name} className="w-full rounded-2xl mb-6" />
+                                    <div className="relative mb-8 overflow-hidden rounded-xl group-hover:shadow-2xl transition-all duration-500">
+                                        <img src={member.imageUrl} alt={member.name} className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500 grayscale hover:grayscale-0" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     </div>
                                     <h3 
-                                        className="font-semibold text-xl md:text-2xl"
+                                        className="font-serif text-2xl md:text-3xl font-medium mb-2"
                                         style={{ color: content.memberNameColor }}
-                                        dangerouslySetInnerHTML={{ __html: member.name }}
-                                    />
+                                    >{member.name}</h3>
                                     <p 
-                                        className="mb-4 text-lg"
+                                        className="mb-6 text-lg font-medium tracking-wide uppercase text-xs opacity-80"
                                         style={{ color: content.memberTitleColor }}
-                                        dangerouslySetInnerHTML={{ __html: member.title }}
-                                    />
+                                    >{member.title}</p>
                                     <div>
-                                    <ul className="space-y-2 font-light text-sm list-disc list-inside" style={{ color: content.memberTextColor }}>
+                                    <ul className="space-y-3 font-light text-base leading-relaxed" style={{ color: content.memberTextColor }}>
                                         {member.achievements.map((item, achievementIndex) => (
-                                            <li key={achievementIndex} dangerouslySetInnerHTML={{ __html: item }} />
+                                            <li key={achievementIndex} className="flex items-start gap-2">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0"></span>
+                                                <span>{item}</span>
+                                            </li>
                                         ))}
                                     </ul>
                                     </div>
