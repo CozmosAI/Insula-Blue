@@ -14,6 +14,7 @@ import FeaturedWork from './components/FeaturedWork';
 import EditModal, { EditField } from './admin/EditModal';
 import ContextMenu from './components/shared/ContextMenu';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import defaultContent from './admin/content.json';
 
 const updateStateByPath = (obj: any, path: string, value: any, action: 'UPDATE' | 'ADD_ITEM' | 'DELETE_ITEM' = 'UPDATE') => {
   const newObj = JSON.parse(JSON.stringify(obj));
@@ -95,7 +96,7 @@ const componentsMap: { [key: string]: React.ElementType } = {
 };
 
 const App: React.FC = () => {
-  const [content, setContent] = useState<any>(null);
+  const [content, setContent] = useState<any>(defaultContent);
   const [isEditMode, setIsEditMode] = useState(false);
   const [modalConfig, setModalConfig] = useState<ModalConfig>({
     isOpen: false,
